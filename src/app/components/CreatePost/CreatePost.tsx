@@ -7,6 +7,7 @@ import { FaVideo, FaCamera, FaSmile, FaPen, FaEllipsisH } from 'react-icons/fa';
 import CreatePostModal from './CreatePostModal';
 
 
+
 export default function CreatePost() {
   const user = useAppSelector(state => state.auth.user)
   const [ openModal, setOpenModal ] = useState(false);
