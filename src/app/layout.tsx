@@ -4,8 +4,8 @@ import { Providers } from "@/lib/Providers";
 
 
 export const metadata: Metadata = {
-  title: "Tricks Hub",
-  description: "A platform to discover and share amazing coding tricks and tips",
+    title: "Tricks Hub",
+    description: "A platform to discover and share amazing coding tricks and tips",
 };
 
 export default function RootLayout({

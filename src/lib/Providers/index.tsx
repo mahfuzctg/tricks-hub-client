@@ -5,9 +5,9 @@ import { Toaster } from "sonner";
 
 // redux 
 import { Provider } from 'react-redux'
-import { store } from "@/redux/store.ts";
-import { persistor } from '@/redux/store.ts';
+
 import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, store } from "@/redux/store";
 
 
 
