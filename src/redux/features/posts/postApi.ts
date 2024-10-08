@@ -1,6 +1,6 @@
 
 
-import { TPost } from "@/app/components/CreatePost/CreatePostModal";
+import { TPost } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal";
 import baseApi from "../../api/baseApi";
 
 

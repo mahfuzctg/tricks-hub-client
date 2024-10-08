@@ -1,6 +1,6 @@
 
 
-import { TComment } from "@/app/components/CreatePost/CreatePostModal";
+import { TComment } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal";
 import baseApi from "../../api/baseApi";
 
 
