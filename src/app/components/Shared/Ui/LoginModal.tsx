@@ -3,7 +3,8 @@
 
 import { RiCloseLargeFill } from "react-icons/ri";
 import React from 'react';
-import Login from '../../app/(withCommon)/login/page';
+import Login from "@/app/(withCommon)/login/page";
+
 
 type TModalProps = {
   open : boolean,
