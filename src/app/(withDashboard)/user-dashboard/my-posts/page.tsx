@@ -5,9 +5,10 @@ import { useState } from "react";
 import { useGetPostsQuery } from "@/redux/features/posts/postApi";
 import { TfiSearch } from "react-icons/tfi";
 import { TPost } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal";
-import PostSkeleton from "@/app/(withCommon)/(home)/components/Posts/PostSkeleton";
-import MiniPostCard from "../../admin-dashboard/components/MiniPostCard";
+
+
 import { useAppSelector } from "@/redux/hooks";
+import PostSkeleton from "@/app/(withCommon)/(home)/components/posts/PostSkeleton";
 
 
 export default function PostSection() {

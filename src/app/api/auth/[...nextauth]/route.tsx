@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-
+import { AuthOptions } from "@/app/config/nextauth.config";
 import NextAuth from "next-auth";
-import { AuthOptions } from "../config/nextauth.config";
 
 const handler = NextAuth(AuthOptions);
 
