@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useAppSelector } from '@/redux/hooks';
 import Link from 'next/link';
@@ -8,22 +8,21 @@ import { RxDashboard } from "react-icons/rx";
 import { SiHomeadvisor } from "react-icons/si";
 import { MdWifiCalling1 } from "react-icons/md";
 
-
 const FeaturesSidebar = () => {
-  const user = useAppSelector(state => state.auth.user)
+  const user = useAppSelector(state => state.auth.user);
 
-    return (
-        <div className="w-64 bg-white p-1 lg:p-4 pb-32 space-y-7">
+  return (
+    <div className="w-full lg:w-64 bg-white p-4 lg:p-6 pb-32 space-y-10">
       {/* New Feeds Section */}
       <div className="space-y-4">
-        <h2 className="text-gray-500 text-sm font-semibold">New Feeds</h2>
-        <ul className="space-y-0 lg:space-y-6 flex flex-col items-start">
+        <h2 className="text-gray-500 text-sm font-semibold">Fresh News</h2>
+        <ul className="space-y-4 flex flex-col items-start">
           <li className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-4 hover:text-blue-500">
               <div className="p-2 rounded-full bg-blue-600 text-xl lg:text-2xl">
                 <FaTv className="text-white" />
               </div>
-              <span className="text-gray-700 font-medium hover:text-blue-600">Newsfeed</span>
+              <span className="text-gray-700 font-medium hover:text-blue-600">FreshNews</span>
               <span className="bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded-full">14</span>
             </Link>
           </li>
@@ -51,15 +50,13 @@ const FeaturesSidebar = () => {
               <span className="text-gray-700 font-medium hover:text-blue-600">Dashboard</span>
             </Link>
           </li>
-          
-         
         </ul>
       </div>
 
       {/* More Pages Section */}
       <div className="space-y-4">
         <h2 className="text-gray-500 text-sm font-semibold">More Pages</h2>
-        <ul className="space-y-0 lg:space-y-6 flex flex-col items-start">
+        <ul className="space-y-4 flex flex-col items-start">
           <li className="flex items-center justify-between">
             <Link href="/about" className="flex items-center space-x-4 hover:text-blue-500">
               <div className="p-2 rounded-full bg-blue-500 text-xl lg:text-2xl">
@@ -90,7 +87,7 @@ const FeaturesSidebar = () => {
       {/* Account Section */}
       <div className="space-y-4">
         <h2 className="text-gray-500 text-sm font-semibold">Account</h2>
-        <ul className="space-y-0 lg:space-y-6 flex flex-col items-start">
+        <ul className="space-y-4 flex flex-col items-start">
           <li className="flex items-center space-x-4">
             <Link href="/settings" className="flex items-center space-x-4 hover:text-blue-500">
               <div className="p-2 rounded-full bg-gray-300 text-xl lg:text-2xl">
@@ -119,7 +116,7 @@ const FeaturesSidebar = () => {
         </ul>
       </div>
     </div>
-    );
+  );
 };
 
 export default FeaturesSidebar;
