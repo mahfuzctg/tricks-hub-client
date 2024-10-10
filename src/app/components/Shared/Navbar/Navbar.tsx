@@ -1,7 +1,7 @@
 'use client'
 
-import DrawerNav from "./DrawerNavbar"
-import { HiOutlineMenu } from "react-icons/hi";
+import DrawerNav from "./DrawerNavbar";
+import { HiOutlineMenu, HiX } from "react-icons/hi"; 
 import Link from "next/link";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -14,12 +14,20 @@ import { RxDashboard } from "react-icons/rx";
 import { CiLogin } from "react-icons/ci";
 import Cookies from 'js-cookie';
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Navbar() {
   const pathName = usePathname();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
   const router = useRouter();
+  
+  // State to toggle mobile menu visibility
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   const logoutUser = () => {
     dispatch(logout());
@@ -34,11 +42,7 @@ export default function Navbar() {
         <li>
           <Link
             href={user?.role === 'admin' ? '/admin-dashboard/statistics' : 'user-dashboard/my-posts'}
-            className={
-              pathName === '/e'
-                ? 'cursor-pointer font-semibold px-4 py-[3px] text-gray-700 transition hover:text-gray-400'
-                : 'font-semibold text-gray-500/80'
-            }
+            className={pathName === '/e' ? 'cursor-pointer font-semibold px-4 py-[3px] text-gray-700 transition hover:text-gray-400' : 'font-semibold text-gray-500/80'}
           >
             Dashboard
           </Link>
@@ -47,11 +51,7 @@ export default function Navbar() {
       <li>
         <Link
           href="/about"
-          className={
-            pathName === '/about'
-              ? 'cursor-pointer font-semibold px-4 py-[3px] text-gray-700 transition hover:text-gray-400'
-              : 'font-semibold text-gray-500/80'
-          }
+          className={pathName === '/about' ? 'cursor-pointer font-semibold px-4 py-[3px] text-gray-700 transition hover:text-gray-400' : 'font-semibold text-gray-500/80'}
         >
           About Us
         </Link>
@@ -59,11 +59,7 @@ export default function Navbar() {
       <li>
         <Link
           href="/contact"
-          className={
-            pathName === '/contact'
-              ? 'cursor-pointer font-semibold px-4 py-[3px] text-gray-700 transition hover:text-gray-400'
-              : 'font-semibold text-gray-500/80'
-          }
+          className={pathName === '/contact' ? 'cursor-pointer font-semibold px-4 py-[3px] text-gray-700 transition hover:text-gray-400' : 'font-semibold text-gray-500/80'}
         >
           Contact Us
         </Link>
@@ -83,14 +79,13 @@ export default function Navbar() {
           {/* Navigation Menu Section */}
           <ul
             id="nav-menu-list"
-            className="hidden lg:flex items-center lg:text-[15px] xl:text-base lg:gap-10 xl:gap-12 menu-horizontal px-1"
+            className={`hidden lg:flex items-center lg:text-[15px] xl:text-base lg:gap-10 xl:gap-12 menu-horizontal px-1`}
           >
             {navLinks}
           </ul>
 
           {/* Icons and User Profile */}
           <div className="flex items-center justify-center gap-2 z-50">
-            {/* Notifications & Settings */}
             {user && (
               <div className="flex items-center gap-3 md:gap-6 text-2xl md:text-[26px] text-gray-500">
                 <span>
@@ -105,7 +100,6 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* User Avatar or Sign Up Button */}
             <div className="dropdown dropdown-end flex items-center justify-center gap-2 z-20">
               {!user && (
                 <Link href={'/register'}>
@@ -157,15 +151,17 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Button - Visible only on small screens */}
-          <label htmlFor="my-drawer" className="lg:hidden text-xl md:text-2xl text-gray-500">
-            <HiOutlineMenu />
-          </label>
-
-          {/* DrawerNav (Mobile Menu) - Hidden on large and medium screens */}
-          <div className="lg:hidden">
-            <DrawerNav />
+          {/* Mobile Menu Toggle Button */}
+          <div className="lg:hidden text-xl md:text-2xl text-gray-500" onClick={toggleMenu}>
+            {menuOpen ? <HiX /> : <HiOutlineMenu />}
           </div>
+
+          {/* DrawerNav (Mobile Menu) - Visible only on small screens */}
+          {menuOpen && (
+            <div className="lg:hidden absolute top-16 left-0 w-full bg-white z-40">
+              <DrawerNav />
+            </div>
+          )}
         </section>
       </Container>
     </div>
