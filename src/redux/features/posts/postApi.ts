@@ -1,5 +1,4 @@
 
-
 import { TPost } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal";
 import baseApi from "../../api/baseApi";
 
