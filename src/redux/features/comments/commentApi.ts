@@ -1,5 +1,4 @@
 
-
 import { TComment } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal";
 import baseApi from "../../api/baseApi";
 
@@ -21,7 +20,7 @@ const commentApi = baseApi.injectEndpoints({
                 url : `/comments/${commentId}`,
                 method : "DELETE",   
             }),
-            invalidatesTags: ['Posts', 'Comments']
+            invalidatesTags: [ 'Comments','Posts', ]
         }),
 
         addComment : builder.mutation({
