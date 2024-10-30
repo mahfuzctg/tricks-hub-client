@@ -39,6 +39,14 @@ const userApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['User', 'Users']
         }),
+        unFollowUser : builder.mutation({
+            query: (payload : { userId: string, targetedUserId : string}) => ({
+                url : `/users/unfollow`,
+                method : "PATCH", 
+                body : payload,  
+            }),
+            invalidatesTags: ['User', 'Users']
+        }),
 
         updateUser : builder.mutation({
             query: ({ userId , payload } : { userId: string, payload:Partial<TUser>}) => ({
@@ -53,5 +61,5 @@ const userApi = baseApi.injectEndpoints({
 })
 
 export const {
-useGetSingleUserQuery, useGetUsersQuery, useDeleteUserMutation, useUpdateUserMutation, useFollowUserMutation
-    } = userApi;
+useGetSingleUserQuery, useGetUsersQuery, useDeleteUserMutation, useUpdateUserMutation, useFollowUserMutation, useUnFollowUserMutation
+ } = userApi;
