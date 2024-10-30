@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Carter+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.carter-one-regular {
+    font-family: "Carter One", system-ui;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* Custom utility to hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

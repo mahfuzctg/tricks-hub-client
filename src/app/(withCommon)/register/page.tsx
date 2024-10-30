@@ -5,7 +5,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
 import { ChangeEvent, useState } from "react";
 import Link from "next/link";
-
+import SocialLogin from "@/components/Shared/SocialLogin";
 import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoUnlock } from "react-icons/go";
@@ -15,7 +15,6 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import uploadImage from "@/utils/uploadImage";
 import Image from "next/image";
-import SocialLogin from "@/app/components/Shared/SocialLogin";
 
 
 
@@ -45,7 +44,6 @@ export default function Register() {
       role :'user',
      })
 
-
      if(result?.error?.data?.message){
       toast.error('Email is already exist')
       setLoading(false)
@@ -71,11 +69,11 @@ export default function Register() {
   
 
   return (
-    <div className="hero h-[730px] md:h-[790px] md:px-4 ">
+    <div className="hero h-[730px] dark:bg-gray-800/20 md:h-[790px] md:px-4 ">
     <div className="hero-content flex-col w-full gap-0">
 
     <div className="text-center lg:text-left pt-5 rounded-l-lg">
-        <h1 className="text-[27px] lg:text-[34px] font-bold text-gray-800 text-center  carter-one-regular mb-3"> Create your account</h1>
+        <h1 className="text-[27px] lg:text-[34px] font-bold text-gray-800 text-center  carter-one-regular mb-3 dark:text-gray-400"> Create your account</h1>
       </div>
 
       <div className="rounded flex-shrink-0 w-full max-w-2xl ">
@@ -86,7 +84,7 @@ export default function Register() {
             
           <div >
            <div className="relative flex items-center">
-           <input type="text" placeholder="Your Name" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600 " {...register('name',{required: true, minLength: 3, maxLength: 20})} />
+           <input type="text" placeholder="Your Name" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white dark:bg-gray-900 dark:border-gray-800 dark:text-gray-400 border-gray-200 text-gray-700 focus:border-blue-600 " {...register('name',{required: true, minLength: 3, maxLength: 20})} />
 
          <span className="text-2xl absolute left-4 text-gray-300"> <IoPersonOutline/></span>
            </div>
@@ -97,7 +95,7 @@ export default function Register() {
 
           <div className="">
            <div   className="relative flex items-center">
-           <input type="email" placeholder="Email" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600 " {...register('email', {required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
+           <input type="email" placeholder="Email" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white dark:bg-gray-900 dark:border-gray-800 dark:text-gray-400 border-gray-200 text-gray-700 focus:border-blue-600 " {...register('email', {required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
             <span className="text-2xl absolute left-4 text-gray-300"> <AiOutlineMail/></span>
            </div>
 
@@ -107,7 +105,7 @@ export default function Register() {
 
           <div className="">
            <div  className="relative flex items-center">
-           <input type="text" placeholder="Password" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600 " {...register('password', {required: true, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,8}$/ })} />
+           <input type="text" placeholder="Password" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white dark:bg-gray-900 dark:border-gray-800 dark:text-gray-400 border-gray-200 text-gray-700 focus:border-blue-600 " {...register('password', {required: true, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{6,8}$/ })} />
             <span className="text-2xl absolute left-4 text-gray-300"> <GoUnlock/></span>
            </div>
 
@@ -117,7 +115,7 @@ export default function Register() {
 
           <div className="">
            <div className="relative flex items-center">
-           <input {...register('image', {required: true })}  onChange={(e) => handleImageChange(e)} type="file" className={`file-input ${imagePreview? 'h-20 pl-20 ': 'pl-8 h-14'} file-input-ghost w-full  bg-white outline-dashed outline-2 rounded-md outline-gray-300/40`} />
+           <input {...register('image', {required: true })}  onChange={(e) => handleImageChange(e)} type="file" className={`file-input ${imagePreview? 'h-20 pl-20 ': 'pl-8 h-14'} file-input-ghost w-full  bg-white  dark:bg-gray-900  outline-dashed outline-2 rounded-md outline-gray-300/40 dark:outline-gray-700`} />
           
             <span className="text-2xl absolute left-4 text-gray-300"> 
 
@@ -134,7 +132,7 @@ export default function Register() {
           </div>
 
           <div className="">
-        <label className="flex items-center gap-2 text-gray-500 font-semibold text-sm">
+        <label className="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold text-sm">
           <input
             type="checkbox"
             {...register('terms', { required: true })}
@@ -146,7 +144,7 @@ export default function Register() {
       <SocialLogin/>
 
           <div className="mt-6">
-            <button className="bg-gray-800 w-full p-3 text-zinc-200 rounded-md font-semibold transition-all flex justify-center items-center hover:bg-zinc-600 text-sm md:text-base" type="submit"> {loading? <ClipLoader
+            <button className="bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 w-full p-3 text-zinc-200 rounded-md font-semibold transition-all flex justify-center items-center hover:bg-zinc-600 text-sm md:text-base" type="submit"> {loading? <ClipLoader
            color='#ffffff'
            loading={loading}
           className=""
@@ -157,7 +155,7 @@ export default function Register() {
           </div>
 
           <div className="mt-2">
-                <h4 className="text-sm font-semibold text-gray-500"> Already Have An Account? <Link href='/login'> <span className="text-blue-600"> Login</span></Link> </h4>
+                <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400"> Already Have An Account? <Link href='/login'> <span className="text-blue-600"> Login</span></Link> </h4>
             </div>
          
           

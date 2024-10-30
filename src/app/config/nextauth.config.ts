@@ -22,7 +22,7 @@ export const AuthOptions: NextAuthOptions = {
         }
 
         if (account?.provider === "google") {
-   
+      
      
 console.log({
   name: profile.name,
@@ -32,7 +32,7 @@ console.log({
 })
 
 return true;
-        
+      
         } else {
           return false;
         }

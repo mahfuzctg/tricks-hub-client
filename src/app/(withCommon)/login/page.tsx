@@ -16,14 +16,19 @@ import { ClipLoader } from "react-spinners";
 import { toast } from "sonner";
 import SocialLogin from "@/app/components/Shared/SocialLogin";
 
-
-export default function Login({setOpen} : { setOpen: React.Dispatch<boolean>}) {
+type TProps = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+export default function Login({setOpen} : TProps) {
 
   const [ errors, setErrors] = useState({emailError: '', passwordError: ''})
   const [ login ] = useLoginMutation();
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [ loading , setLoading ] = useState(false)
+
+  // demo credentials for testing 
+  const [ demoUser, setDemoUser ] = useState({})
 
 
 
@@ -62,20 +67,30 @@ export default function Login({setOpen} : { setOpen: React.Dispatch<boolean>}) {
     toast.success('Logged In Successfully')
     setLoading(false);
     if(typeof setOpen === 'function')setOpen(false)
-    const role = decoded?.role;
-    role === 'user'? router.push('/')  :  router.push('/');
-    
+    router.push('/')
    }
 }
 
 
   return(
-    <div className="hero h-[600px] pb-32 md:pb-0 md:h-[600px] ">
+    <div className="hero h-[600px] dark:bg-gray-800/20 rounded-lg pb-32 md:pb-0 md:h-[600px] ">
 
     <div className="hero-content flex-col w-full p-0">
 
       <div className="text-center lg:text-left">
-        <h1 className="text-3xl lg:text-4xl text-gray-700  px-6 py-3 font-bold text-center carter-one-regular">Login your account</h1>
+
+      {/* Login with Demo Accound  */}
+      <div className="border rounded-lg p-1 bg-yellow-300 mt-3">
+      <h1 className="text-lg lg:text-xl text-lime-600  px-6 py-3 font-bold ">Login With Demo For testing</h1>
+
+   <div className="flex items-center justify-center ">
+   <button onClick={()=> setDemoUser({ email: 'demoUser@gmail.com', password: '12345En$'})} className="bg-yellow-500 p-1 rounded-md text-sm lg:text-base text-black font-semibold mr-5">Login As User</button>
+   <button onClick={()=> setDemoUser({ email: 'demoAdmin@gmail.com', password: '12345En$'})} className="bg-yellow-500 p-1 rounded-md text-sm lg:text-base text-black font-semibold">Login As Admin</button>
+   </div>
+      </div>
+
+
+        <h1 className="text-3xl lg:text-4xl text-gray-700  px-6 py-3 font-bold text-center carter-one-regular dark:text-gray-400">Login your account</h1>
       </div>
 
       <div className="rounded-md flex-shrink-0 w-full max-w-2xl  ">
@@ -86,17 +101,21 @@ export default function Login({setOpen} : { setOpen: React.Dispatch<boolean>}) {
 
           <div className="mb-5">
            <div className="relative flex items-center">
-           <input onChange={() => setErrors({emailError:'', passwordError: ''})}  type="email" placeholder="Email" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600 " name="email" />
+           <input onChange={() => setErrors({emailError:'', passwordError: ''})}  type="email" placeholder="Email" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600 dark:text-gray-400 dark:bg-gray-900 dark:border-gray-700/50" name="email" 
+           
+           defaultValue={demoUser?.email || ""}
+           />
            <span className="text-2xl absolute left-4 text-gray-300"> <AiOutlineMail/></span>
            </div>
 
             {errors?.emailError && <span className="text-red-600"> {errors?.emailError} </span>}
           </div>
 
-
           <div className="mb-4">
             <div className="relative flex items-center">
-            <input  onChange={() => setErrors({emailError:'', passwordError: ''})} type="text" placeholder="Password" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600 " name="password" />
+            <input  onChange={() => setErrors({emailError:'', passwordError: ''})} type="text" placeholder="Password" className="w-full py-3 pl-12 pr-3 outline-none border-2 rounded-md bg-white border-gray-200 text-gray-700 focus:border-blue-600  dark:bg-gray-900 dark:text-gray-400 dark:border-gray-700/50" name="password"
+             defaultValue={demoUser?.password || ""}
+            />
             <span className="text-2xl absolute left-4 text-gray-300"> <GoUnlock/></span>
             </div>
 
@@ -107,7 +126,7 @@ export default function Login({setOpen} : { setOpen: React.Dispatch<boolean>}) {
           <SocialLogin/>
 
           <div className="form-control mt-6">
-            <button className="bg-gray-800 w-full p-3 text-zinc-200 rounded-md font-semibold transition-all flex justify-center items-center hover:bg-zinc-600 text-sm md:text-base" type="submit">{loading? <ClipLoader
+            <button className="bg-gray-700 dark:bg-gray-700 w-full p-3 text-zinc-200 rounded-md font-semibold transition-all flex justify-center items-center hover:bg-zinc-600 dark:hover:bg-gray-700 text-sm md:text-base" type="submit">{loading? <ClipLoader
            color='#ffffff'
            loading={loading}
           className=""
@@ -117,7 +136,7 @@ export default function Login({setOpen} : { setOpen: React.Dispatch<boolean>}) {
           </div>
 
           <div className="mt-2">
-                <h4 className="text-sm font-semibold text-gray-500">Don't Have An Account? <Link href='/register'> <span className="text-blue-600">Register</span></Link> </h4>
+                <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400">Do not Have An Account? <Link href='/register'> <span className="text-blue-600">Register</span></Link> </h4>
             </div>
         </form>
 
