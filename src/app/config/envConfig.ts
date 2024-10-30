@@ -3,7 +3,6 @@ const envConfig = {
     googleClientId: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     nextAuthSecret: process.env.NEXTAUTH_SECRET,
-  
     paymentKey : process.env.NEXT_PAYMENT_KEY,
   };
   

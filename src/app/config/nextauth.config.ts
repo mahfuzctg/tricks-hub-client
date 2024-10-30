@@ -12,7 +12,37 @@ export const AuthOptions: NextAuthOptions = {
     }),
   ],
 
+  callbacks: {
+    async signIn({ profile, account }: any) {
+      
+      try {
 
+        if (!profile || !account) {
+          return false;
+        }
+
+        if (account?.provider === "google") {
+   
+     
+console.log({
+  name: profile.name,
+  email: profile.email,
+  image: profile.picture,
+  role : 'user'
+})
+
+return true;
+        
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+  
+    },
+  },
 
   pages: {
     signIn: "/login",

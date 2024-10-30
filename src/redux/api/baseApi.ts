@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
-import envConfig from '@/config/envConfig';
+import envConfig from '@/app/config/envConfig';
 
 
 const baseApi = createApi({
