@@ -102,9 +102,16 @@ export default function PostSection() {
             {/* Card placeholder  */}
             {isFetching && [1, 2].map((num) => <PostSkeleton key={num} /> )}
 
-      <div ref={ref} className="text-center text-gray-500">
-        {posts?.length < totalPosts ? '' : 'No more items to load...'}
-      </div>
+            <div ref={ref} className="text-center text-xl text-gray-500 mt-6">
+  {posts?.length < totalPosts ? '' : (
+    <div className="flex flex-col items-center">
+      <span className="text-4xl mb-2">😢</span>
+      <p className="font-semibold">Oops! No data found...</p>
+      <p className="text-gray-400 mt-1">Try adjusting your search or check back later!</p>
+    </div>
+  )}
+</div>
+
         </div> 
 
         </section>

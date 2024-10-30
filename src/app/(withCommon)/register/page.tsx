@@ -5,7 +5,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
 import { ChangeEvent, useState } from "react";
 import Link from "next/link";
-import SocialLogin from "@/components/Shared/SocialLogin";
+
 import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoUnlock } from "react-icons/go";
@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import uploadImage from "@/utils/uploadImage";
 import Image from "next/image";
+import SocialLogin from "@/app/components/Shared/SocialLogin";
 
 
 
