@@ -1,8 +1,8 @@
 
 
 export type TJwtDecoded = {
-    email : string;
-    exp : number;
-    iat : number;
-    role : string;
-  }
+  email : string;
+  exp : number;
+  iat : number;
+  role : string;
+}

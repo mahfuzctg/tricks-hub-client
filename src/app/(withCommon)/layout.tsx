@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 import Navbar from "../components/Shared/Navbar/Navbar";
 import Sidebar from "../components/Shared/Sidebar";
 import FeaturesSidebar from "../components/Shared/FeaturesSidebar";
+import RightSidebar from "./(home)/components/RightSidebar";
 
 
 const CommonLayout = ({children} : {children : ReactNode}) => {
