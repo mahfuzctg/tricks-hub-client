@@ -63,10 +63,10 @@ export default function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900 px-4">
+    <div className="flex items-center justify-center h-screen bg-white dark:bg-gray-900 px-4">
       <div className="w-full max-w-2xl bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
         <div className="text-center pb-5">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">🌟 Create your account</h1>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">🌟 CREATE NEW ACCOUNT!</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -152,8 +152,8 @@ export default function Register() {
 
           {/* Login Link */}
           <div className="mt-2 text-center">
-            <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400">
-              Already Have An Account? <Link href='/login' className="text-blue-600"> Login</Link>
+            <h4 className="text-sm font-semibold text-black dark:text-gray-700">
+              Already Have An Account? <Link href='/login' className="text-black"> Login</Link>
             </h4>
           </div>
         </form>
