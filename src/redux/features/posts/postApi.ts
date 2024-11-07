@@ -17,7 +17,7 @@ const postApi = baseApi.injectEndpoints({
 
         getPosts : builder.query({
             query: (query) => ({
-                url : '/api/posts',
+                url : '/posts',
                 method : "GET",
                 params : query,
             }),
