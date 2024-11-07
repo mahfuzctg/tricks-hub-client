@@ -5,7 +5,7 @@ import CreatePost from "./components/CreatePost/CreatePost";
 import PostSection from "./components/posts/PostSection";
 
 
-// import PostSection from "./components/Posts/PostSection";
+
 
 
 const Home = () => {
