@@ -1,6 +1,6 @@
 'use client'
 
-import DrawerNav from "./DrawerNavbar";
+
 import { HiOutlineMenu } from "react-icons/hi";
 import Link from "next/link";
 import { IoArrowRedoOutline, IoSettingsOutline } from "react-icons/io5";
@@ -34,7 +34,7 @@ export default function Navbar() {
       <li><Link href="/" className={`cursor-pointer font-semibold ${pathName === '/' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Feed</Link></li>
       <li><Link href="/about" className={`cursor-pointer font-semibold ${pathName === '/about' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>About Us</Link></li>
       <li><Link href="/contact" className={`cursor-pointer font-semibold ${pathName === '/contact' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Contact Us</Link></li>
-      <li><Link href="/latest-event" className={`cursor-pointer font-semibold ${pathName === '/latest-event' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Latest Event</Link></li>
+      <li><Link href="/latest-event" className={`cursor-pointer font-semibold ${pathName === '/latest-event' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Latest</Link></li>
     </>
   );
 
@@ -44,7 +44,7 @@ export default function Navbar() {
         <section className="max-w-[1500px] mx-auto px-4 flex justify-between md:pt-2 h-16 md:h-[96px] bg-gray-50 dark:bg-gray-900">
           {/* Logo section */}
           <div className="flex items-center gap-1">
-            <h3 className="text-gray-800 dark:text-gray-300 font-extrabold text-[22px] md:text-2xl xl:text-3xl">TrendTweaks</h3>
+            <h3 className="text-gray-800 dark:text-gray-300 font-extrabold text-[22px] md:text-2xl xl:text-3xl">Tricks Hub</h3>
           </div>
 
           {/* Nav menu section */}
