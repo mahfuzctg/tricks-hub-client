@@ -7,7 +7,7 @@ import CheckoutForm from "./CheckOutForm";
 // import envConfig from "@/config/envConfig";
 
 // get stripe promise with publishable key 
-const stripePromise = loadStripe('rk_test_51Q80yRRshYN8wYCWUgvbvPf2QrQgUdxhsiarNlt4bLDpyeiUdt4MwFt245RTkMzxqa2TP4EOQdd2uX6tN7H4bkoT0077dpfukI')
+const stripePromise = loadStripe('pk_test_51Q80yRRshYN8wYCWBwCIqUVzzCqB8z9jG3DpdF7sHe3uFdIBD93lK8WEAJgsern3C9KrcNvPz0bCS82Gbo8TYIjP00sSJCLPr5')
 
 
 type TModalProps = {
