@@ -1,6 +1,8 @@
 
 
-const PostSkeleton = () => {
+
+
+export const PostSkeleton = () => {
     return (
         <div className="p-4 mt-3 border border-gray-200 rounded-md shadow-sm w-full  mx-auto space-y-4">
         {/* <!-- User Info Skeleton --> */}

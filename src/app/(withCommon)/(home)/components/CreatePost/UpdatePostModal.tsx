@@ -65,9 +65,9 @@ export default function UpdatePostModal({ open, setOpen, postId} : TModalProps) 
     images : [],
     isPremium : data.premium === 'premium'? true : false,
   }
-  if(data.image1) postData.images.push(data.image1)
-  if(data.image2) postData.images.push(data.image2)
-  if(data.image3) postData.images.push(data.image3)
+  if(data.image1) postData?.images?.push(data.image1)
+  if(data.image2) postData?.images?.push(data.image2)
+  if(data.image3) postData?.images?.push(data.image3)
 
   try {
     const response =  await updatePost({

@@ -14,7 +14,7 @@ const NotFound = () => {
 
         {/* Description */}
         <p className="text-gray-600 mt-4 max-w-md mx-auto">
-          The page you're looking for isn't available right now. It may have been moved, renamed, or is currently down for maintenance. Please check the URL or go back to the homepage.
+          The page you&apos;re looking for isn&apos;t available right now. It may have been moved, renamed, or is currently down for maintenance. Please check the URL or go back to the homepage.
         </p>
 
         {/* Button Section */}
