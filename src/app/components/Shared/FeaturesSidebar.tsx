@@ -27,11 +27,11 @@ const FeaturesSidebar = () => {
             </Link>
           </li>
           <li className="flex items-center space-x-4">
-            <Link href="/membership" className="flex items-center space-x-4 hover:text-black">
+          <Link href="/membarship" className="flex items-center space-x-4 hover:text-gray-700">
               <div className="p-2 rounded-full bg-black text-xl lg:text-2xl">
                 <GoPackage className="text-white" />
               </div>
-              <span className="text-black font-medium hover:text-black">Membership</span>
+              <span className="text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 dark:hover:text-blue-500">Membership</span>
             </Link>
           </li>
           <li className="flex items-center space-x-4">
