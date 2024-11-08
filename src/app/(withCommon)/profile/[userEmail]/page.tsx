@@ -14,6 +14,8 @@ import { toast } from 'sonner';
 import { RiUserUnfollowLine } from "react-icons/ri";
 import { useState } from 'react';
 import EditProfileModal from '../components/EditProfileModal';
+import Followers from '../components/Followers';
+import MyPosts from '../components/MyPosts';
 
 const Profile = ({ params} : { params: { userEmail: string}}) => {
   const { userEmail } = params;
@@ -74,7 +76,7 @@ const Profile = ({ params} : { params: { userEmail: string}}) => {
         {/* Cover Photo */}
         <div className="relative">
           <Image
-            src={coverImg || 'https://i.ibb.co.com/mqccxqc/minimalist-purple-mountains-sunset-wallpaper.jpg'}
+            src={coverImg || 'https://i.postimg.cc/N0ZB4gJ3/3ac7072a310f60109fc04e3d4f469bbe.jpg'}
             alt="Cover"
             width={600}
             height={600}

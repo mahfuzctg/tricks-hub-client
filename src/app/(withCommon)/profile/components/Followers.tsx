@@ -81,7 +81,7 @@ const Followers  = ({ followers, following, ranDomUserEmail} : TProps) => {
             <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold mb-4">Followers ({followers?.length}) </h2>
             <div className="space-y-4 max-h-28 overflow-y-scroll">
               {followers?.map(follower => (
-                <div key={follower?._id} className="flex items-center space-x-4 border-b dark:border-gray-700 rounded-md pb-1">
+                <div key={follower?.id} className="flex items-center space-x-4 border-b dark:border-gray-700 rounded-md pb-1">
                   <Image width={50} height={50}
                     src={follower?.image}
                     alt={follower?.name}
