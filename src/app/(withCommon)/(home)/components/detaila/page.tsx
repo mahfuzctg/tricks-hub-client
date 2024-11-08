@@ -24,6 +24,7 @@ import { useReactToPrint } from 'react-to-print';
 import MiniUserProfile from '../posts/MiniUserProfile';
 import ImageGallery from '../posts/ImageGallery';
 import VoteSection from '../posts/VoteSection';
+import EditCommentModal from '../posts/EditCommentModal';
 
 
 

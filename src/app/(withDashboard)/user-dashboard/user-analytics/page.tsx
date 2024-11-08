@@ -62,14 +62,14 @@ const Dashboard = () => {
           <FaEye className="text-2xl text-blue-500 mr-4" />
           <div>
             <h3 className=" md:text-xl font-semibold text-gray-500">Views</h3>
-            <p className="text-lg md:text-xl xl:text-2xl font-bold text-gray-600">52</p>
+            <p className="text-lg md:text-xl xl:text-2xl font-bold text-gray-600">77</p>
           </div>
         </div>
         <div className="bg-gray-100/70 p-4 rounded-lg  flex items-center">
           <FaChartLine className="text-2xl text-green-500 mr-4" />
           <div>
             <h3 className=" md:text-xl font-semibold text-gray-500">Votes</h3>
-            <p className="text-lg md:text-xl xl:text-2xl font-bold text-gray-600">35</p>
+            <p className="text-lg md:text-xl xl:text-2xl font-bold text-gray-600">24</p>
           </div>
         </div>
         <div className="bg-gray-100/70 p-4 rounded-lg  flex items-center">

@@ -78,7 +78,7 @@ export default function Navbar() {
                       width={200}
                       height={200}
                       alt="profile"
-                      src={user?.image || 'https://i.ibb.co/Ttgtb82/pngwing-com-15.png'}
+                      src={user?.image || 'https://i.postimg.cc/sDtdQVXq/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid-1001605-3447.avif'}
                       className="dropdown size-8 lg:size-9 object-cover cursor-pointer rounded-full border border-gray-400"
                     />
                     <ul tabIndex={0} className="dropdown-content p-3 mt-1 shadow-2xl bg-white dark:bg-gray-800 rounded-lg w-60">
@@ -88,7 +88,7 @@ export default function Navbar() {
                           width={200}
                           height={200}
                           alt="profile"
-                          src={user?.image || 'https://i.ibb.co/Ttgtb82/pngwing-com-15.png'}
+                          src={user?.image || 'https://i.postimg.cc/sDtdQVXq/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid-1001605-3447.avif'}
                           className="w-8 h-8 object-cover rounded-full border border-gray-300 p-[1px]"
                         />
                       </li>

@@ -15,14 +15,14 @@ const FeaturesSidebar = () => {
     <div className="w-full lg:w-64 bg-white p-4 lg:p-6 pb-32 space-y-10">
       {/* New Feeds Section */}
       <div className="space-y-4">
-        <h2 className="text-black text-sm font-semibold">Fresh News</h2>
+        <h2 className="text-black text-sm font-semibold">News</h2>
         <ul className="space-y-4 flex flex-col items-start">
           <li className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-4 hover:text-black">
               <div className="p-2 rounded-full bg-black text-xl lg:text-2xl">
                 <FaTv className="text-white" />
               </div>
-              <span className="text-black font-medium hover:text-black">FreshNews</span>
+              <span className="text-black font-medium hover:text-black">News</span>
               <span className="bg-black text-white text-xs font-bold px-2 py-1 rounded-full">14</span>
             </Link>
           </li>

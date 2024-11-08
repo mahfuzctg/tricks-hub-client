@@ -7,7 +7,8 @@ import { TfiSearch } from "react-icons/tfi";
 import { useInView } from "react-intersection-observer";
 import { TPost } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal";
 import PostCard from "../components/MiniPostCard";
-import PostSkeleton from "@/app/(withCommon)/(home)/components/Posts/PostSkeleton";
+import PostSkeleton from "@/app/(withCommon)/(home)/components/posts/PostSkeleton";
+
 
 export default function PostSection() {
 

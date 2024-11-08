@@ -138,7 +138,7 @@ const reactToPrintFn = useReactToPrint({ contentRef });
 
      {/* Main comment section */}
      <div className="flex flex-col space-y-2 pb-2 md:pb-4 my-3 relative">
-     <h4 className="font-semibold text-gray-600 cursor-pointer">View more comments</h4>
+     <h4 className="font-semibold text-gray-600 cursor-pointer">More comments</h4>
 
    {/* loading white layer  */}
    {addLoading || deleteLoading || updateLoading && <div className="w-full h-full absolute top-0 left-0 z-50 right-0 bottom-0 bg-white/80 rounded-md flex justify-center items-center"> 
