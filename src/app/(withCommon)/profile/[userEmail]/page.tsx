@@ -13,6 +13,7 @@ import { ClipLoader } from 'react-spinners';
 import { toast } from 'sonner';
 import { RiUserUnfollowLine } from "react-icons/ri";
 import { useState } from 'react';
+import EditProfileModal from '../components/EditProfileModal';
 
 const Profile = ({ params} : { params: { userEmail: string}}) => {
   const { userEmail } = params;
