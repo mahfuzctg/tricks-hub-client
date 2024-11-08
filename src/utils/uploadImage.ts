@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 
-const imageHostingKey = 'c0c5035ed3e36a140cd0d5bd41fa1b8b';
+const imageHostingKey = 'c75264bec71fafabee8aec54007f1fb9';
 const imageUploadApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`
 
 

@@ -10,14 +10,15 @@ import { BiCommentDetail } from "react-icons/bi";
 import Link from "next/link";
 import { MdStars } from "react-icons/md";
 import { TComment, TPost } from '@/app/(withCommon)/(home)/components/CreatePost/CreatePostModal';
-import MiniUserProfile from '@/app/(withCommon)/(home)/components/Posts/MiniUserProfile';
-import VoteSection from '@/app/(withCommon)/(home)/components/Posts/VoteSection';
+
 import { MdModeEdit } from "react-icons/md"
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useState } from 'react';
 import UpdatePostModal from '@/app/(withCommon)/(home)/components/CreatePost/UpdatePostModal';
 import { useDeletePostMutation } from '@/redux/features/posts/postApi';
 import { toast } from 'sonner';
+import MiniUserProfile from '@/app/(withCommon)/(home)/components/posts/MiniUserProfile';
+import VoteSection from '@/app/(withCommon)/(home)/components/posts/VoteSection';
 
 
 

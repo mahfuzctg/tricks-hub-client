@@ -16,7 +16,7 @@ const baseApi = createApi({
     },
   }),
   tagTypes: ['Posts', 'Post', 'Users', 'User', 'Comments'],
-  endpoints: () => ({}), // Keep this empty if no endpoints are needed yet
+  endpoints: () => ({}), 
 });
 
 export default baseApi;

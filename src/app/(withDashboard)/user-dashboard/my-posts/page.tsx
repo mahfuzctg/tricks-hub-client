@@ -9,6 +9,7 @@ import { TPost } from "@/app/(withCommon)/(home)/components/CreatePost/CreatePos
 
 import { useAppSelector } from "@/redux/hooks";
 import PostSkeleton from "@/app/(withCommon)/(home)/components/posts/PostSkeleton";
+import MiniPostCard from "../../admin-dashboard/components/MiniPostCard";
 
 
 export default function PostSection() {

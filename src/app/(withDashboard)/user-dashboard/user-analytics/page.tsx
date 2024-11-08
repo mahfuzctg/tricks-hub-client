@@ -53,11 +53,7 @@ const Dashboard = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl xl:text-3xl font-bold">Analytics</h1>
-        {/* <div className="space-x-4">
-          <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Week</button>
-          <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Month</button>
-          <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Year</button>
-        </div> */}
+      
       </div>
 
       {/* Summary Cards */}

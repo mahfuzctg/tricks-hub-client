@@ -3,7 +3,7 @@
 import { useAppSelector } from '@/redux/hooks';
 import { TUser } from '@/redux/features/authentication/authSlice';
 import { useGetSingleUserQuery } from '@/redux/features/user/userApi';
-import { FaUserFriends, FaUserPlus } from 'react-icons/fa'; // Import icons
+import { FaUserFriends, FaUserPlus } from 'react-icons/fa'; 
 import Image from 'next/image';
 
 const MyFollowers = () => {
