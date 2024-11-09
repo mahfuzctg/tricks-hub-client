@@ -10,7 +10,7 @@ const ContactPage = () => {
         {/* Page Header */}
         <div className="text-center mb-4">
           <h1 className="text-3xl font-semibold text-gray-900">📬 CONTACT US!</h1>
-          <p className="text-gray-600 mt-1">We'd love to hear from you! 📝</p>
+          <p className="text-gray-600 mt-1">We&apos;d love to hear from you! 📝</p>
         </div>
 
         {/* Contact Form */}

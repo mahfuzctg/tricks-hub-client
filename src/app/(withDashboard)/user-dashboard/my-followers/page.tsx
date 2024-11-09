@@ -7,7 +7,15 @@ import { FaUserFriends, FaUserPlus } from 'react-icons/fa';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const fetchUserById = async (userId: string) => {
+// Define a type for followers and following data structure
+interface Follower {
+  _id: string;
+  image: string;
+  name: string;
+  email: string;
+}
+
+const fetchUserById = async (userId: string): Promise<Follower> => {
   const response = await fetch(`/api/users/${userId}`);
   const data = await response.json();
   return data;
@@ -19,8 +27,8 @@ const MyFollowers = () => {
   const userDetails: TUser = data?.data || {};
   const { followers = [], following = [] } = userDetails;
 
-  const [fullFollowers, setFullFollowers] = useState<any[]>([]);
-  const [fullFollowing, setFullFollowing] = useState<any[]>([]);
+  const [fullFollowers, setFullFollowers] = useState<Follower[]>([]);
+  const [fullFollowing, setFullFollowing] = useState<Follower[]>([]);
 
   useEffect(() => {
     const fetchFollowers = async () => {
@@ -70,7 +78,7 @@ const MyFollowers = () => {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {fullFollowers.map((follower: any) => (
+                {fullFollowers.map((follower: Follower) => (
                   <tr key={follower._id} className="border-b hover:bg-gray-100 transition-colors">
                     <td className="px-6 py-4 border-r flex justify-center items-center">
                       <Image
@@ -114,7 +122,7 @@ const MyFollowers = () => {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {fullFollowing.map((followedUser: any) => (
+                {fullFollowing.map((followedUser: Follower) => (
                   <tr key={followedUser._id} className="border-b hover:bg-gray-100 transition-colors">
                     <td className="px-6 py-4 border-r flex justify-center items-center">
                       <Image

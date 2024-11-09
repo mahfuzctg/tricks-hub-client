@@ -38,7 +38,7 @@ const Page = () => {
             <section className="relative h-[300px] mb-10 bg-cover bg-center rounded-xl overflow-hidden animate-fadeIn" style={{ backgroundImage: "url('https://i.postimg.cc/FzGQPwhX/istockphoto-943067460-612x612.jpg')" }}>
                 <div className="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
                 <div className="container mx-auto flex justify-center items-center text-center relative z-10 text-white">
-                    <div className="fade-in text-center">
+                    <div className="fade-in text-center my-12">
                         <h1 className="text-4xl md:text-5xl font-bold mb-5 animate-bounce">Welcome to Tricks Hub</h1>
                         <p className="text-lg md:text-xl max-w-3xl mx-auto mb-6 animate-slideIn">Discover the latest tips, tricks, and tutorials to enhance your skills. Explore and learn more today!</p>
                     </div>
@@ -106,7 +106,7 @@ const Page = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gradient-to-r from-green-500 to-blue-500 text-white py-8 mt-10 rounded-t-xl shadow-lg">
+            <footer className="bg-gradient-to-r from-gray-800 to-gray-700 text-white py-8 mt-10 rounded-t-xl shadow-lg">
     <div className="container mx-auto text-center">
         <p className="text-lg font-semibold mb-3">
             Made with ❤️ by Tricks Hub Team

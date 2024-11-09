@@ -1,5 +1,4 @@
 'use client'
-
 import { useLoginMutation } from "@/redux/features/authentication/authApi";
 import { setUser } from "@/redux/features/authentication/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
@@ -8,64 +7,76 @@ import { jwtDecode } from "jwt-decode";
 import Cookies from 'js-cookie';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { GoUnlock } from "react-icons/go";
 import { ClipLoader } from "react-spinners";
 import { toast } from "sonner";
 import SocialLogin from "@/app/components/Shared/SocialLogin";
 
+// Define response types for login mutation
+type LoginResponse = {
+  success: boolean;
+  data: {
+    image: string;
+    name: string;
+  };
+  token: string;
+};
+
+type LoginErrorResponse = {
+  message: string;
+};
+
 type TProps = {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export default function Login({ setOpen }: TProps) {
-  const [errors, setErrors] = useState({ emailError: '', passwordError: '' })
+  const [errors, setErrors] = useState({ emailError: '', passwordError: '' });
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   // demo credentials for testing 
-  const [demoUser, setDemoUser] = useState({})
+  const [demoUser, setDemoUser] = useState<{ email?: string; password?: string }>({});
 
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
 
-    const form = new FormData(e.target);
-    const email = form.get('email')
-    const password = form.get('password')
+    const form = new FormData(e.currentTarget);
+    const email = form.get('email') as string;
+    const password = form.get('password') as string;
 
-    const res: any = await login({ email, password })
+    const res = await login({ email, password });
 
-    if (res?.error?.data?.message === 'user not exist') {
-      setErrors({ ...errors, emailError: 'Incorrect Email 😞' })
+    if ((res.error as LoginErrorResponse)?.message === 'user not exist') {
+      setErrors({ ...errors, emailError: 'Incorrect Email 😞' });
       setLoading(false);
-    }
-    else if (res?.error?.data?.message === 'Password incorrect') {
-      setErrors({ ...errors, passwordError: 'Incorrect Password 🔒' })
+    } else if ((res.error as LoginErrorResponse)?.message === 'Password incorrect') {
+      setErrors({ ...errors, passwordError: 'Incorrect Password 🔒' });
       setLoading(false);
-    }
-    else if (res?.data?.success) {
-      const userImage = res?.data?.data?.image;
-      const name = res?.data?.data?.name;
+    } else if ((res.data as LoginResponse)?.success) {
+      const userImage = res.data.data.image;
+      const name = res.data.data.name;
 
       // decode the jwt token 
       const decoded: TJwtDecoded = jwtDecode(res.data.token);
       dispatch(setUser({
         user: { ...decoded, image: userImage, name },
         token: res.data.token
-      }))
+      }));
       // setting up token to the Cookie manually, this token is for accessing in the middleware of Next js.
-      Cookies.set('accessToken', res?.data?.token, { expires: 1 });
+      Cookies.set('accessToken', res.data.token, { expires: 1 });
 
-      toast.success('Logged In Successfully 🎉')
+      toast.success('Logged In Successfully 🎉');
       setLoading(false);
-      if (typeof setOpen === 'function') setOpen(false)
-      router.push('/')
+      if (typeof setOpen === 'function') setOpen(false);
+      router.push('/');
     }
-  }
+  };
 
   return (
     <div className="hero min-h-screen flex items-center justify-center bg-white shadow-xl rounded-lg">
@@ -139,7 +150,7 @@ export default function Login({ setOpen }: TProps) {
 
           <div className="text-center text-sm text-gray-500 mt-4">
             <h4 className="font-semibold">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link href='/register'>
                 <span className="text-black hover:text-gray-700">Register ✍️</span>
               </Link>
@@ -148,5 +159,5 @@ export default function Login({ setOpen }: TProps) {
         </form>
       </div>
     </div>
-  )
+  );
 }

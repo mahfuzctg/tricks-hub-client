@@ -1,6 +1,7 @@
+// @typescript-eslint/no-unused-vars
 'use client'
 
-import { AiOutlineClose } from "react-icons/ai";
+
 import Sidebar from "../Sidebar";
 import { useAppSelector } from "@/redux/hooks";
 import { usePathname } from "next/navigation";
