@@ -8,52 +8,61 @@ import CreatePostModal from './CreatePostModal';
 
 export default function CreatePost() {
   const user = useAppSelector(state => state.auth.user)
-  const [ openModal, setOpenModal ] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-lg w-full  mx-auto">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-full mx-auto">
 
       {/* Create Post Modal  */}
-      {openModal &&  <CreatePostModal open={openModal} setOpen={setOpenModal} />}
+      {openModal && <CreatePostModal open={openModal} setOpen={setOpenModal} />}
 
       {/* Header Section */}
       <div className="flex items-center mb-4">
-        <FaPen className="text-blue-500 md:text-lg" />
-        <h2 className="ml-2 xl:text-lg font-semibold text-gray-500">Create Post</h2>
+        <FaPen className="text-gray-600 md:text-2xl" />
+        <h2 className="ml-2 text-lg font-semibold text-gray-500">What’s on your mind?</h2>
       </div>
 
       {/* Input Section */}
-      <div className="flex items-center space-x-2 mb-4">
+      <div className="flex items-center space-x-3 mb-4">
         <Image
-          src={user?.image || ''} // Replace with dynamic avatar URL
+          src={user?.image || ''}
           alt="Avatar"
-          height={300}
-          width={300}
-          className="size-9 md:size-10 rounded-full object-cover"
+          height={40}
+          width={40}
+          className="rounded-full object-cover"
         />
-        <button onClick={() => setOpenModal(true)} 
-          className="flex-1 p-2 md:p-3 border border-gray-200 rounded-md text-left text-gray-600">Whats on your mind?</button>
+        <button
+          onClick={() => setOpenModal(true)}
+          className="flex-1 p-3 border border-gray-300 rounded-md text-left text-gray-600 hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:outline-none"
+        >
+          Share your thoughts... 📝
+        </button>
       </div>
 
       {/* Action Buttons Section */}
-      <div className="flex justify-between items-center">
-        <button className="flex items-center space-x-1 text-red-500 hover:bg-red-100 p-2 rounded-lg">
-          <FaVideo className="text-base md:text-xl" />
-          <span className="text-xs md:text-sm font-medium">Live Video</span>
+      <div className="flex justify-between items-center text-xs md:text-sm text-gray-600">
+
+        {/* Live Video Button */}
+        <button className="flex items-center space-x-2 text-gray-800 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
+          <FaVideo className="text-lg md:text-xl" />
+          <span>🎥 Live Video</span>
         </button>
 
-        <button className="flex items-center space-x-1 text-green-500 hover:bg-green-100 p-2 rounded-lg">
-          <FaCamera className="text-base md:text-xl" />
-          <span className="text-xs md:text-sm font-medium">Photo/Video</span>
+        {/* Photo/Video Button */}
+        <button className="flex items-center space-x-2 text-gray-800 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
+          <FaCamera className="text-lg md:text-xl" />
+          <span>📸 Photo/Video</span>
         </button>
 
-        <button className="flex items-center space-x-1 text-orange-500 hover:bg-orange-100 p-2 rounded-lg">
-          <FaSmile className="text-base md:text-xl" />
-          <span className="text-xs md:text-sm font-medium">Feeling/Activity</span>
+        {/* Feeling/Activity Button */}
+        <button className="flex items-center space-x-2 text-gray-800 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
+          <FaSmile className="text-lg md:text-xl" />
+          <span>😊 Feeling/Activity</span>
         </button>
 
+        {/* More Options Button */}
         <button className="hidden md:block text-gray-500 hover:bg-gray-100 p-2 rounded-lg">
-          <FaEllipsisH className="text-base md:text-xl" />
+          <FaEllipsisH className="text-lg md:text-xl" />
         </button>
       </div>
     </div>

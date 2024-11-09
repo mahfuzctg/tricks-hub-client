@@ -1,7 +1,7 @@
 'use client'
 
 import { HiOutlineMenu } from "react-icons/hi";
-import { IoIosClose } from "react-icons/io"; // Add close icon import
+import { IoIosClose } from "react-icons/io"; 
 import Link from "next/link";
 import { IoArrowRedoOutline, IoSettingsOutline } from "react-icons/io5";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -23,7 +23,7 @@ export default function Navbar() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.auth.user);
   const router = useRouter();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State to toggle the drawer
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const logoutUser = () => {
     dispatch(logout());
@@ -34,10 +34,10 @@ export default function Navbar() {
 
   const navLinks = (
     <>
-      <li><Link href="/" className={`cursor-pointer font-semibold ${pathName === '/' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Feed</Link></li>
-      <li><Link href="/about" className={`cursor-pointer font-semibold ${pathName === '/about' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>About Us</Link></li>
-      <li><Link href="/contact" className={`cursor-pointer font-semibold ${pathName === '/contact' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Contact Us</Link></li>
-      <li><Link href="/latest-event" className={`cursor-pointer font-semibold ${pathName === '/latest-event' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>Latest</Link></li>
+      <li><Link href="/" className={`cursor-pointer font-semibold ${pathName === '/' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>🏠 Feed</Link></li>
+      <li><Link href="/about" className={`cursor-pointer font-semibold ${pathName === '/about' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📖 About Us</Link></li>
+      <li><Link href="/contact" className={`cursor-pointer font-semibold ${pathName === '/contact' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📞 Contact Us</Link></li>
+      <li><Link href="/latest-event" className={`cursor-pointer font-semibold ${pathName === '/latest-event' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>🔔 Latest</Link></li>
     </>
   );
 
@@ -46,8 +46,10 @@ export default function Navbar() {
       <section className="max-w-[1500px] mx-auto px-4 flex justify-between md:pt-2 h-16 md:h-[96px] bg-gray-50 dark:bg-gray-900">
         {/* Logo section */}
         <div className="flex items-center gap-1">
-          <h3 className="text-gray-800 dark:text-gray-300 font-extrabold text-[22px] md:text-2xl xl:text-3xl">Tricks Hub</h3>
-        </div>
+  <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-black to-gray-500 font-extrabold text-[22px] md:text-2xl xl:text-3xl">Tricks Hub 🌐</h3>
+</div>
+
+
 
         {/* Nav menu section */}
         <ul id="nav-menu-list" className="hidden lg:flex items-center lg:text-[15px] xl:text-base lg:gap-10 xl:gap-12 menu-horizontal px-1">
@@ -59,9 +61,9 @@ export default function Navbar() {
           <div className="mr-3 md:mr-5 lg:mr-0 rounded-full text-xl md:text-[22px] lg:text-2xl text-black flex gap-5 md:gap-6 items-center">
             {user && (
               <div className="flex items-center gap-3 md:gap-6 text-2xl md:text-[26px] text-gray-500 dark:text-gray-400">
-                <span><IoIosNotificationsOutline /></span>
-                <span className="text-xl md:text-[23px] xl:text-2xl hidden md:block"><RxDashboard /></span>
-                <span className="hidden md:block"><IoSettingsOutline /></span>
+                <span><IoIosNotificationsOutline className="text-gray-600 dark:text-gray-400" title="Notifications" /></span>
+                <span className="text-xl md:text-[23px] xl:text-2xl hidden md:block"><RxDashboard className="text-gray-600 dark:text-gray-400" title="Dashboard" /></span>
+                <span className="hidden md:block"><IoSettingsOutline className="text-gray-600 dark:text-gray-400" title="Settings" /></span>
               </div>
             )}
 
@@ -85,7 +87,7 @@ export default function Navbar() {
                   {/* Dropdown Menu when hovering on Profile */}
                   <ul tabIndex={0} className="dropdown-content p-3 mt-1 shadow-2xl bg-white dark:bg-gray-800 rounded-lg w-60 absolute top-full left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <li className="text-lg p-2 border-b dark:border-gray-600 font-semibold rounded text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                      {user?.name || 'User'}
+                      {user?.name || 'User'}{' '}
                       <Image
                         width={200}
                         height={200}

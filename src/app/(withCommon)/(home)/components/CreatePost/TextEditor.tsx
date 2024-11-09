@@ -18,7 +18,7 @@ const TextEditor = ({ description ='', setLatestDescription}: TProps) => {
         <div className="w-full">
         <Editor
           apiKey="kx095fty1tawpi69r5z7ybvqumq4k1vvockmxubycrsjawks" 
-          initialValue={`<p>${description || 'Description here...'}</p>`}
+          initialValue={`<p>${description || 'Write Description...'}</p>`}
           init={{
             height: 190,
             menubar: false,

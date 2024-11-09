@@ -53,7 +53,7 @@ const postApi = baseApi.injectEndpoints({
         
         votePost : builder.mutation({
             query: (payload) => ({
-                // payload  { postId, userId, voteType }
+          
                 
                 url : `/posts/vote`,
                 method : "POST", 
