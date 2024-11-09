@@ -52,7 +52,7 @@ export default function CheckoutForm({membersShip, setOpen } : { membersShip : {
             return;
         }
         
-        // get input field value from CardElement , this is internal mechanism
+ 
         const card = elements.getElement(CardElement);
 
         if(card === null){
@@ -145,7 +145,7 @@ export default function CheckoutForm({membersShip, setOpen } : { membersShip : {
         }}/>
             <button className=" bg-green-600 my-6 py-2 text-sm md:text-base font-semibold uppercase px-12 rounded-md text-white/80" disabled={!stripe || !elements}> {loading?  <ClipLoader
            color='#ffffff'
-          //  loading={dataLoading || updateLoading}
+        
            size={16}
            aria-label="Loading Spinner"
            speedMultiplier={0.8} /> : 'Pay Now'}</button>

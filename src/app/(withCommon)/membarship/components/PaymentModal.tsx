@@ -28,7 +28,7 @@ export default function  PaymentModal({ setOpen, membersShip } : TModalProps) {
 
       {/* Membership info  */}
       <section className="flex items-center gap-3">
-        {/* <img className="md:w-36 h-20 object-contain" src={booking?.car?.images[0]}/> */}
+  
 
         <div>
               <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-300">{membersShip?.name}</h2>

@@ -139,7 +139,7 @@ const Membership = () => {
         {membershipPackages.map((pack, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 ease-in-out"
+            className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 flex flex-col justify-between group hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 ease-in-out"
             style={{
               backgroundColor: pack.bgColor,
             }}
@@ -170,7 +170,7 @@ const Membership = () => {
                 setMembersShip(pack);
                 setOpenPayModal(true);
               }}
-              className="w-full py-2 px-4 text-white rounded-md mt-auto hover:bg-opacity-90 transition-colors ease-in-out"
+              className="w-full py-2 px-4 text-white rounded-md mt-auto hover:bg-opacity-90 transition-colors ease-in-out group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-yellow-500"
               style={{ backgroundColor: '#4B5563' }} 
             >
               Subscribe Now
