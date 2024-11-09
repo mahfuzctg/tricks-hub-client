@@ -1,6 +1,7 @@
 'use client'
 
 import { HiOutlineMenu } from "react-icons/hi";
+import { IoIosClose } from "react-icons/io"; // Add close icon import
 import Link from "next/link";
 import { IoArrowRedoOutline, IoSettingsOutline } from "react-icons/io5";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -14,12 +15,15 @@ import Cookies from 'js-cookie';
 import Image from "next/image";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdDashboardCustomize } from "react-icons/md";
+import DrawerNav from "./DrawerNavbar";
+import { useState } from "react";
 
 export default function Navbar() {
   const pathName = usePathname();
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.auth.user);
   const router = useRouter();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State to toggle the drawer
 
   const logoutUser = () => {
     dispatch(logout());
@@ -70,46 +74,48 @@ export default function Navbar() {
                 </Link>
               ) : (
                 <div className="relative group">
-  {/* Profile Picture */}
-  <Image
-    width={200}
-    height={200}
-    alt="profile"
-    src={user?.image || 'https://i.postimg.cc/sDtdQVXq/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid-1001605-3447.avif'}
-    className="dropdown size-8 lg:size-9 object-cover cursor-pointer rounded-full border border-gray-400"
-  />
-  {/* Dropdown Menu when hovering on Profile */}
-  <ul tabIndex={0} className="dropdown-content p-3 mt-1 shadow-2xl bg-white dark:bg-gray-800 rounded-lg w-60 absolute top-full left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-    <li className="text-lg p-2 border-b dark:border-gray-600 font-semibold rounded text-gray-600 dark:text-gray-300 flex items-center gap-2">
-      {user?.name || 'User'}
-      <Image
-        width={200}
-        height={200}
-        alt="profile"
-        src={user?.image || 'https://i.postimg.cc/sDtdQVXq/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid-1001605-3447.avif'}
-        className="w-8 h-8 object-cover rounded-full border border-gray-300 p-[1px]"
-      />
-    </li>
-    <Link href={`/profile/${user?.email}`}>
-      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><RiUserFill /> Profile</li>
-    </Link>
-    <Link href={user?.role === 'admin' ? '/admin-dashboard/statistics' : '/user-dashboard/my-posts'}>
-      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><MdDashboardCustomize /> Dashboard</li>
-    </Link>
-    <li onClick={logoutUser} className="text-base font-semibold cursor-pointer transition-all text-gray-600 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><IoArrowRedoOutline /> Log out</li>
-  </ul>
-</div>
-
+                  {/* Profile Picture */}
+                  <Image
+                    width={200}
+                    height={200}
+                    alt="profile"
+                    src={user?.image || 'https://i.postimg.cc/sDtdQVXq/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid-1001605-3447.avif'}
+                    className="dropdown size-8 lg:size-9 object-cover cursor-pointer rounded-full border border-gray-400"
+                  />
+                  {/* Dropdown Menu when hovering on Profile */}
+                  <ul tabIndex={0} className="dropdown-content p-3 mt-1 shadow-2xl bg-white dark:bg-gray-800 rounded-lg w-60 absolute top-full left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <li className="text-lg p-2 border-b dark:border-gray-600 font-semibold rounded text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                      {user?.name || 'User'}
+                      <Image
+                        width={200}
+                        height={200}
+                        alt="profile"
+                        src={user?.image || 'https://i.postimg.cc/sDtdQVXq/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid-1001605-3447.avif'}
+                        className="w-8 h-8 object-cover rounded-full border border-gray-300 p-[1px]"
+                      />
+                    </li>
+                    <Link href={`/profile/${user?.email}`}>
+                      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><RiUserFill /> Profile</li>
+                    </Link>
+                    <Link href={user?.role === 'admin' ? '/admin-dashboard/statistics' : '/user-dashboard/my-posts'}>
+                      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><MdDashboardCustomize /> Dashboard</li>
+                    </Link>
+                    <li onClick={logoutUser} className="text-base font-semibold cursor-pointer transition-all text-gray-600 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><IoArrowRedoOutline /> Log out</li>
+                  </ul>
+                </div>
               )}
             </div>
           </div>
 
           {/* Drawer toggle button */}
-          <label htmlFor="my-drawer" className="lg:hidden text-xl md:text-2xl text-gray-500 dark:text-gray-400">
-            <HiOutlineMenu />
+          <label htmlFor="my-drawer" className="lg:hidden text-xl md:text-2xl text-gray-500 dark:text-gray-400 cursor-pointer" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
+            {isDrawerOpen ? <IoIosClose /> : <HiOutlineMenu />} {/* Toggle between menu and close icons */}
           </label>
         </div>
       </section>
+
+      {/* Drawer component, only visible when the state is true */}
+      {isDrawerOpen && <DrawerNav setIsDrawerOpen={setIsDrawerOpen} />}
     </div>
   );
 }
