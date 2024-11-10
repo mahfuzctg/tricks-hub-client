@@ -52,7 +52,7 @@ const FeaturesSidebar = () => {
                 </Link>
               </li>
               <li className="flex items-center space-x-4">
-                <Link href="/membership" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/membership')}`}>
+                <Link href="/membarship" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/membarship')}`}>
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <GoPackage className="text-black" />
                   </div>
@@ -148,11 +148,11 @@ const FeaturesSidebar = () => {
                 </Link>
               </li>
               <li className="flex items-center space-x-4">
-                <Link href="/membership" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/membership')}`}>
+                <Link href="/membarship" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/membarship')}`}>
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <GoPackage className="text-black" />
                   </div>
-                  <span className="font-medium">Membership 🎁</span>
+                  <span className="font-medium">membarship 🎁</span>
                 </Link>
               </li>
               <li className="flex items-center space-x-4">
@@ -191,7 +191,7 @@ const FeaturesSidebar = () => {
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <FaCalendarAlt className="text-black" />
                   </div>
-                  <span className="font-medium">Latest🗓️</span>
+                  <span className="font-medium">Latest 🗓️</span>
                 </Link>
               </li>
             </ul>

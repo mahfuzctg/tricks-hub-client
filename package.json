@@ -15,12 +15,14 @@
     "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.7",
     "chart.js": "^4.4.4",
+    "css-loader": "^7.1.2",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "lightgallery": "^2.7.2",
     "nexios-http": "^1.1.21",
     "next": "^14.2.13",
     "next-auth": "^4.24.8",
+    "postcss-loader": "^8.1.1",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-countup": "^6.5.3",
@@ -37,6 +39,7 @@
     "recharts": "^2.12.7",
     "redux-persist": "^6.0.0",
     "sonner": "^1.5.0",
+    "style-loader": "^4.0.0",
     "sweetalert2": "^11.14.1"
   },
   "devDependencies": {
