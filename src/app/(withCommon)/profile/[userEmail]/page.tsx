@@ -28,7 +28,7 @@ const Profile = ({ params} : { params: { userEmail: string}}) => {
 
 
     const {email, image,memberShip,name, coverImg , followers, following} = userDetails;
-
+  
 
         // follow and unfollow 
         const [ followUser , { isLoading: followLoading }] = useFollowUserMutation();
@@ -93,7 +93,7 @@ const Profile = ({ params} : { params: { userEmail: string}}) => {
             <div>
               <h1 className=  "text-xl md:text-2xl font-bold flex items-center">
                 {name}
-                {memberShip && <FaCheckCircle className="text-blue-500 ml-2" />}
+                {memberShip && <FaCheckCircle className="text-gray-800 ml-2" />}
               </h1>
               <p className="text-gray-600 dark:text-gray-400">{email}</p>
             </div>
@@ -120,7 +120,7 @@ const Profile = ({ params} : { params: { userEmail: string}}) => {
           </button></> 
           
           : 
-          <><button onClick={handleFollow} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 text-sm md:text-base rounded-lg flex items-center font-semibold gap-2">
+          <><button onClick={handleFollow} className="bg-gray-800 hover:bg-gray-600 text-white px-4 py-2 text-sm md:text-base rounded-lg flex items-center font-semibold gap-2">
            
           {(followLoading || unFollowLoading)?  <ClipLoader
            color='#ffffff'
@@ -154,14 +154,14 @@ const Profile = ({ params} : { params: { userEmail: string}}) => {
   
   
         {/* Membership Section */}
-      {memberShip &&   <div className={`mt-4 mb-8 p-4 bg-orange-50 dark:bg-orange-950 rounded-lg shadow`}>
+      {memberShip &&   <div className={`mt-4 mb-8 p-4 bg-white dark:bg-orange-950 rounded-lg shadow`}>
           <h2 className="text-lg text-gray-600 font-bold dark:text-gray-300">Membership</h2>
           <div className="flex items-center mt-2">
-            <div className="text-orange-400 font-bold text-xl">{memberShip?.package?.name}</div>
-            <span className="ml-auto bg-orange-100 dark:bg-orange-800 py-1 px-3 rounded-md text-gray-500 dark:text-gray-100 font-semibold">Designer</span>
+            <div className="text-gray-600 font-bold text-xl">{memberShip?.package?.name}</div>
+            <span className="ml-auto bg-white dark:bg-orange-800 py-1 px-3 rounded-md text-gray-500 dark:text-gray-100 font-semibold">Developer</span>
           </div>
           <p className="text-gray-500 mt-2 dark:text-gray-400">
-            87% progress through the membership.
+           You are well on your way to mastering your membership benefits! Keep it up!
           </p>
         </div>}
 

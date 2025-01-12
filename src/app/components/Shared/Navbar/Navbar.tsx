@@ -35,7 +35,7 @@ export default function Navbar() {
   const navLinks = (
     <>
       <li><Link href="/" className={`cursor-pointer font-semibold ${pathName === '/' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>🏠 Feed</Link></li>
-      <li><Link href="/about" className={`cursor-pointer font-semibold ${pathName === '/about' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📖 About Us</Link></li>
+      <li><Link href="/premium" className={`cursor-pointer font-semibold ${pathName === '/premium' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📖 Premium</Link></li>
       <li><Link href="/contact" className={`cursor-pointer font-semibold ${pathName === '/contact' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📞 Contact Us</Link></li>
       <li><Link href="/latest-event" className={`cursor-pointer font-semibold ${pathName === '/latest-event' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>🔔 Latest</Link></li>
     </>

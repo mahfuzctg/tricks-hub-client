@@ -29,6 +29,6 @@ export interface TUser {
   name: string;
   role: string;
   image: string;
-  followers?: FollowerType[]; // Now references FollowerType array
-  following?: FollowerType[]; // Following can also reference FollowerType array
+  followers?: FollowerType[]; 
+  following?: FollowerType[]; 
 }

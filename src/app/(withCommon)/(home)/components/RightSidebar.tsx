@@ -160,7 +160,7 @@ const RightSidebar = () => {
                     <p className="font-medium text-gray-500 dark:text-gray-300">{user?.name}</p>
 
                     <button onClick={()=> handleFollow(user?._id)}
-             className=" bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white py-1 px-2 xl:px-3 rounded-md lg:text-sm xl:text-base font-semibold flex items-center gap-1 justify-center">
+             className=" bg-gray-800 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-800 text-white py-1 px-2 xl:px-3 rounded-md lg:text-sm xl:text-base font-semibold flex items-center gap-1 justify-center">
              <FaUserPlus /> Follow
           </button>
 

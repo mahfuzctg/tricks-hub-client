@@ -131,6 +131,8 @@ export default function CreatePostModal({ open, setOpen }: TModalProps) {
               <option value="Software Engineering">Software Engineering</option>
               <option value="AI">AI</option>
               <option value="Technology">Technology</option>
+              <option value="Reality">Reality</option>
+              <option value="Others">Others</option>
             </select>
           </div>
 

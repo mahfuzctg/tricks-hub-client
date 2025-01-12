@@ -26,22 +26,21 @@ import { AiFillPrinter, AiOutlineEllipsis } from "react-icons/ai";
 import EditCommentModal from "./EditCommentModal";
 import { FaPen } from 'react-icons/fa';
 import { jsPDF } from "jspdf";
-import { HiDotsHorizontal, HiDotsVertical } from "react-icons/hi";
-
+import { HiDotsVertical } from "react-icons/hi";
 
 // Import necessary components from react-share
 import { 
-  FacebookShareButton, // Wrapper for Facebook share functionality
-  TwitterShareButton,  // Wrapper for Twitter share functionality
-  WhatsappShareButton, // Wrapper for WhatsApp share functionality
-  FacebookIcon,        // Facebook share icon
-  TwitterIcon,         // Twitter share icon
-  WhatsappIcon,         // WhatsApp share icon
+  FacebookShareButton, 
+  TwitterShareButton,  
+  WhatsappShareButton, 
+  FacebookIcon,        
+  TwitterIcon,         
+  WhatsappIcon,         
   LinkedinShareButton,
   LineIcon
 } from "react-share";
 
-export default function PostCard({ post }: { post: TPost }) {
+export default function PremiumPostCard({ post }: { post: TPost }) {
   const { register, handleSubmit, reset } = useForm();
   const user = useAppSelector((state) => state.auth.user);
   const [addComment, { isLoading: addLoading }] = useAddCommentMutation();
@@ -51,14 +50,9 @@ export default function PostCard({ post }: { post: TPost }) {
 
   const [showActions, setShowActions] = useState(false); // State to toggle PDF/Print icons visibility
 
-  
-
-
-    // for printing the page
-    const contentRef = useRef<HTMLDivElement>(null);
-    const reactToPrintFn = useReactToPrint({ contentRef });
-
-    
+  // for printing the page
+  const contentRef = useRef<HTMLDivElement>(null);
+  const reactToPrintFn = useReactToPrint({ contentRef });
 
   // Generate PDF functionality
   const generatePDF = () => {
@@ -129,9 +123,6 @@ export default function PostCard({ post }: { post: TPost }) {
     }
   };
 
-  // Use the hook outside the function
-  const [updateComment] = useUpdateCommentMutation();
-
   // Handle edit comment
   const handleEdit = async (commentId: string, updatedComment: string) => {
     try {
@@ -152,11 +143,9 @@ export default function PostCard({ post }: { post: TPost }) {
     setShowCommentInput((prev) => !prev);
   };
 
-
-
   // Define share-related variables and functionality
   const postUrl = `https://tricks-hub-client.vercel.app/post/${_id}`;
-  const postTitle = description.slice(0, 50); // Short description or title for the shared content
+  const postTitle = description.slice(0, 100); // Short description or title for the shared content
 
   // State for showing/hiding the share options
   const [showShareOptions, setShowShareOptions] = useState(false);
@@ -173,10 +162,7 @@ export default function PostCard({ post }: { post: TPost }) {
   return (
     <div ref={contentRef} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 w-full mx-auto lg:mb-6">
       {/* Header with User Info */}
-
-       
       <div className="flex items-center mb-4">
-        
         <section className="group relative">
           <Image
             width={300}
@@ -186,7 +172,6 @@ export default function PostCard({ post }: { post: TPost }) {
             alt="User Avatar"
           />
           <MiniUserProfile userInfo={post.authorInfo} />
-          
         </section>
 
         <div className="ml-3">
@@ -197,11 +182,10 @@ export default function PostCard({ post }: { post: TPost }) {
             </time>
           </p>
         </div>
-     
-        <div className="ml-auto flex items-center gap-2 relative">
 
-             {/* Premium Icon */}
-             {post.isPremium && (
+        <div className="ml-auto flex items-center gap-2 relative">
+          {/* Premium Icon */}
+          {isPremium && (
             <FaProductHunt className="text-gray-500 cursor-pointer text-2xl" />
           )}
 
@@ -230,14 +214,9 @@ export default function PostCard({ post }: { post: TPost }) {
               </button>
             </div>
           )}
-      
         </div>
       </div>
-        
 
-
-
-  
       {/* Post Description */}
       <div className="text-gray-700 dark:text-gray-400 mb-4 text-base lg:text-lg" dangerouslySetInnerHTML={{ __html: description }}></div>
 
@@ -252,132 +231,95 @@ export default function PostCard({ post }: { post: TPost }) {
       <div className="flex justify-between items-center mt-4 border-y dark:border-gray-600 py-2">
         <div className="flex space-x-6 text-gray-600">
           <VoteSection postId={_id as string} userId={user?._id as string} votes={votes!} voters={voters!} />
-          <div className="flex items-center gap-3 bg-gray-200/50 dark:bg-gray-900 rounded-full px-3 py-1">
-            <BiCommentDetail className="cursor-pointer text-lg xl:text-xl text-gray-500" onClick={toggleCommentInput} />
-            <span className="font-semibold text-gray-600 dark:text-gray-400">{comments?.length}</span>
+          <div className="flex items-center gap-3 bg-gray-200/30 dark:bg-gray-700/40 rounded-xl text-sm p-2">
+            <BiCommentDetail className="text-lg" />
+            <button
+              className="text-green-500"
+              onClick={toggleCommentInput}
+            >
+              {comments.length} Comments
+            </button>
           </div>
         </div>
- {/* // Share button and dropdown menu in the JSX */}
-<div className="relative">
-  {/* Button to open/close the share options */}
-  <button
-    onClick={toggleShareOptions}
-    className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-300 transition-colors"
-  >
-    <FaShare className="cursor-pointer hover:scale-110 transition-transform" />
-    <span>Share</span>
-  </button>
-
-  {/* Conditionally rendered share options */}
-  {showShareOptions && (
-    <div className="absolute top-full right-0 mt-2 bg-white dark:bg-gray-700 shadow-md rounded-md p-4 flex flex-col gap-2 z-10">
-      
-      {/* Facebook Share */}
-      <FacebookShareButton url={postUrl} onClick={handleShareClick}>
-        <div className="flex items-center gap-2 cursor-pointer">
-          <FacebookIcon size={32} round /> {/* Facebook Icon */}
-          <span className="text-gray-700 dark:text-gray-300">Facebook</span>
+        
+        {/* Share Button */}
+        <div className="flex items-center gap-3">
+          <button className="text-gray-500" onClick={toggleShareOptions}>
+            <FaShare className="text-lg" />
+          </button>
+          {showShareOptions && (
+            <div className="bg-white dark:bg-gray-700 p-2 shadow-md rounded-md absolute right-0 top-full mt-2 flex items-center gap-3">
+              <FacebookShareButton url={postUrl} quote={postTitle}>
+                <FacebookIcon size={32} round={true} />
+              </FacebookShareButton>
+              <WhatsappShareButton url={postUrl}>
+                <WhatsappIcon size={32} round={true} />
+              </WhatsappShareButton>
+              <TwitterShareButton url={postUrl}>
+                <TwitterIcon size={32} round={true} />
+              </TwitterShareButton>
+              <LinkedinShareButton url={postUrl}>
+                <LineIcon size={32} round={true} />
+              </LinkedinShareButton>
+            </div>
+          )}
         </div>
-      </FacebookShareButton>
-      {/* Linkedin Share */}
-      <LinkedinShareButton url={postUrl}>
-        <div className="flex items-center gap-2 cursor-pointer">
-          <LineIcon size={32} round /> {/* Facebook Icon */}
-          <span className="text-gray-700 dark:text-gray-300">Linkedin</span>
-        </div>
-      </LinkedinShareButton>
-      
-      {/* Twitter Share */}
-      <TwitterShareButton url={postUrl} title={postTitle}>
-        <div className="flex items-center gap-2 cursor-pointer">
-          <TwitterIcon size={32} round /> {/* Twitter Icon */}
-          <span className="text-gray-700 dark:text-gray-300">Twitter</span>
-        </div>
-      </TwitterShareButton>
-      
-      {/* WhatsApp Share */}
-      <WhatsappShareButton url={postUrl} title={postTitle}>
-        <div className="flex items-center gap-2 cursor-pointer">
-          <WhatsappIcon size={32} round /> {/* WhatsApp Icon */}
-          <span className="text-gray-700 dark:text-gray-300">WhatsApp</span>
-        </div>
-      </WhatsappShareButton>
-    </div>
-  )}
-
-  
-</div> 
       </div>
 
-      {/* Main comment section */}
-      <div className="flex flex-col space-y-2 pb-2 md:pb-4 my-3 relative">
-        <h4 className="font-semibold text-gray-600 dark:text-gray-400 cursor-pointer">Comments</h4>
-
-        {/* Loading white layer */}
-        {(addLoading || deleteLoading) && (
-          <div className="w-full h-full absolute top-0 left-0 z-50 right-0 bottom-0 bg-white/80 rounded-md flex justify-center items-center">
-            <ClipLoader color="#4B5563" size={35} aria-label="Loading Spinner" speedMultiplier={0.8} />
-          </div>
-        )}
-
-        {comments?.slice(0, 2).map((comment: TComment) => (
-          <div key={comment._id} className="flex space-x-2 ">
-            {/* Edit comment modal */}
-            {openEditCommentModal && <EditCommentModal setOpen={setEditCommentModal} comment={commentForEdit} currentUserId={""} postId={""} />}
-
-            {/* User Image */}
-            <Image src={comment?.userInfo?.image} alt={'user'} width={300} height={300} className="size-10 rounded-full object-cover" />
-
-            <div className="flex flex-col flex-wrap">
-              {/* User Info */}
-              <div className="bg-gray-100 dark:bg-gray-900/60 flex flex-col flex-wrap rounded-xl group px-3 relative">
-                <h4 className="font-semibold">{comment?.userInfo?.name}</h4>
-                {/* Comment Text */}
-                <span className="text-gray-700 dark:text-gray-400">{comment?.comment}</span>
-
-                {user && comment.userInfo.email === user.email && (  // Check if the logged-in user is the creator of the comment
-         <div className="p-4 hidden group-hover:flex text-gray-600 dark:text-gray-400 text-[13px] rounded-lg ml-4 absolute top-0 right-0 gap-3">
-         {/* Edit Icon */}
-         <div
-           className="flex items-center justify-center bg-gray-200 dark:bg-gray-700 p-3 rounded-full cursor-pointer transform hover:scale-110 transition-all duration-200 shadow-md hover:bg-gray-300 dark:hover:bg-gray-600"
-           title="Edit Comment"
-           onClick={() => { setEditCommentModal(true); setCommentForEdit(comment); }}
-         >
-           <FaPen className="text-gray-600 dark:text-gray-400 hover:text-gray-500 transition-colors" />
-         </div>
-       
-         {/* Delete Icon */}
-         <div
-           className="flex items-center justify-center bg-red-200 dark:bg-red-700 p-3 rounded-full cursor-pointer transform hover:scale-110 transition-all duration-200 shadow-md hover:bg-red-300 dark:hover:bg-red-600"
-           title="Delete Comment"
-           onClick={() => handleDelete(comment._id!)}
-         >
-           <RiDeleteBin4Line className="text-red-600 dark:text-red-400 hover:text-white transition-colors" />
-         </div>
-       </div>
-       
-        )}
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Show Add Comment Section */}
-        {showCommentInput && (
-          <form onSubmit={handleSubmit(onSubmit)} className="relative">
-            <textarea
-              {...register('newComment', { required: true })}
-              className="p-2 w-full mt-2 rounded-lg dark:bg-gray-700 text-gray-500 dark:text-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-gray-600"
+      {/* Comment Section */}
+      {showCommentInput && (
+        <div className="mt-6">
+          <form
+            className="flex gap-2"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <input
+              {...register("newComment", { required: true })}
+              type="text"
+              className="bg-gray-200 dark:bg-gray-800 p-3 w-full rounded-md"
               placeholder="Add a comment..."
             />
             <button
               type="submit"
-              className="absolute right-4 bottom-3 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              className="text-blue-600"
             >
-              <IoSendSharp />
+              <IoSendSharp className="text-2xl" />
             </button>
           </form>
-        )}
+        </div>
+      )}
+
+      {/* Comments List */}
+      <div className="mt-6 space-y-6">
+        {comments.map((comment) => (
+          <div key={comment._id} className="flex justify-between items-center bg-gray-100 dark:bg-gray-800 p-4 rounded-md">
+            <div className="flex items-center gap-2">
+              <Image
+                src={comment.userInfo.image}
+                alt="User Avatar"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div className="text-sm">
+                <h4 className="font-semibold">{comment.userInfo.name}</h4>
+                <TimeAgo date={comment.createdAt} />
+              </div>
+            </div>
+            <div className="text-sm dark:text-gray-400 w-full">
+              {comment.comment}
+            </div>
+            {/* Action Buttons */}
+            <div className="flex gap-3">
+              <button onClick={() => handleEdit(comment._id, comment.comment)}>
+                <FaPen className="text-blue-500" />
+              </button>
+              <button onClick={() => handleDelete(comment._id)}>
+                <RiDeleteBin4Line className="text-red-500" />
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

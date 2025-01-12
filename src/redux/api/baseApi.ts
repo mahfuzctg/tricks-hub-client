@@ -6,9 +6,10 @@ import { RootState } from '../store';
 const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
-    // baseUrl: `${process.env.NEXT_PUBLIC_BASE_API}/api`,
+    // baseUrl: `${process.env.NEXT_PUBLIC_BASE_API}`,
+ 
     // baseUrl : "https://tricks-hub-server.vercel.app/api",
-    baseUrl : "https://tricks-hub-server.vercel.app/api",
+    baseUrl : "http://localhost:5000/api",
    
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
@@ -18,7 +19,7 @@ const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Posts', 'Post', 'Users', 'User', 'Comments'],
+  tagTypes: ['Posts', 'Post', 'Users', 'User', 'Comments' ],
   endpoints: () => ({}), 
 });
 

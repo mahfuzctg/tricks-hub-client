@@ -15,7 +15,11 @@ export type TPayment = {
     package : object;
     takenDate : string;
     userInfo : TUser;
-    exp : string 
+    exp : string ,
+    _id: string;
+
+    email: string;
+  
 },
     transactionId : string
 }

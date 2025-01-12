@@ -68,7 +68,7 @@ const MiniUserProfile = ({
           {/* Buttons */}
           {user?.email === userInfo?.email ? (
             <div className="flex mt-4 space-x-2">
-              <button className="flex-1 font-semibold bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded-full">
+              <button className="flex-1 font-semibold bg-gray-600 hover:bg-gray-500 text-white py-1 px-4 rounded-full">
                 Create Post
               </button>
               <Link href={`/profile/${userInfo?.email}`}>
@@ -81,13 +81,13 @@ const MiniUserProfile = ({
             <div className="flex mt-4 space-x-2">
               {/* Follow/Following Button */}
               {latestAuthorData?.followers?.includes(user?._id as string) ? (
-                <button className="flex-1 bg-blue-500 text-white py-1 px-4 rounded-full font-semibold">
+                <button className="flex-1 bg-gray-500 text-white py-1 px-4 rounded-full font-semibold">
                   Following
                 </button>
               ) : (
                 <button
                   onClick={handleFollow}
-                  className="flex-1 font-semibold bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded-full"
+                  className="flex-1 font-semibold bg-gray-600 hover:bg-gray-500 text-white py-1 px-4 rounded-full"
                 >
                   {isLoading ? (
                     <ClipLoader

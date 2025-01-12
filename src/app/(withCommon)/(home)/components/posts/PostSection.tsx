@@ -7,30 +7,30 @@ import { TPost } from "../CreatePost/CreatePostModal";
 import PostSkeleton from "./PostSkeleton";
 import { TfiSearch } from "react-icons/tfi";
 import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";  // Import motion from framer-motion
+import { FaSpinner } from "react-icons/fa";  // Import a spinner icon for loading
 
 export default function PostSection() {
-  const [filterQuery, setFilterQuery] = useState({});
-  const { data, isFetching } = useGetPostsQuery({ ...filterQuery }); // No skip or limit
+  const [filterQuery, setFilterQuery] = useState({
+    limit: 10, // Start with an initial limit
+  });
+  const { data, isFetching } = useGetPostsQuery(filterQuery); // Using the filter query to fetch data
   const { totalPosts, posts } = data?.data || {};
 
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 1, // Trigger when the bottom is fully visible
   });
 
+  // Update filterQuery to load more posts when user scrolls to bottom
   useEffect(() => {
-    if (inView) {
-      const isFilterExist = Object.keys(filterQuery).find(option =>
-        ['category', 'searchTerm', 'sortByUpvote'].includes(option)
-      );
-
-      console.log(posts?.length, totalPosts);
-
-      if (!isFilterExist && posts?.length < totalPosts) {
-        setFilterQuery({ ...filterQuery, limit: posts.length + 10 });
-      }
-      return;
+    if (inView && !isFetching && posts?.length < totalPosts) {
+      // Check if there's room for more posts
+      setFilterQuery((prev) => ({
+        ...prev,
+        limit: prev.limit + 4, // Increase the limit by 4 posts on scroll
+      }));
     }
-  }, [inView, filterQuery, posts, totalPosts]);
+  }, [inView, posts, totalPosts, isFetching]);
 
   return (
     <section className="py-6">
@@ -44,7 +44,7 @@ export default function PostSection() {
                 <TfiSearch />
               </span>
               <input
-                onChange={(e) => setFilterQuery(prev => ({ ...prev, searchTerm: e.target.value }))}
+                onChange={(e) => setFilterQuery((prev) => ({ ...prev, searchTerm: e.target.value }))}
                 type="text"
                 className="w-full rounded-full outline-none placeholder:text-gray-500 py-2 pl-10 pr-4 bg-white shadow-md focus:ring-2 focus:ring-blue-500"
                 placeholder="Search..."
@@ -54,24 +54,24 @@ export default function PostSection() {
             {/* Sort and Category Selectors */}
             <div className="flex gap-4 items-center">
               <select
-                onChange={(e) => setFilterQuery(prev => ({ ...prev, sortByUpvote: e.target.value }))}
+                onChange={(e) => setFilterQuery((prev) => ({ ...prev, sortByUpvote: e.target.value }))}
                 className="p-2 shadow-md rounded-full outline-1 text-xs md:text-sm bg-white"
               >
                 <option disabled selected>Sort by Upvote</option>
-                <option value='-1'>Most Upvoted</option>
-                <option value='1'>Most Downvoted</option>
+                <option value="-1">Most Upvoted</option>
+                <option value="1">Most Downvoted</option>
               </select>
 
               <select
-                onChange={(e) => setFilterQuery(prev => ({ ...prev, category: e.target.value }))}
+                onChange={(e) => setFilterQuery((prev) => ({ ...prev, category: e.target.value }))}
                 className="p-2 shadow-md rounded-full text-xs md:text-sm bg-white"
               >
                 <option disabled selected>Select Category</option>
-                <option value=''>All</option>
-                <option value='Web'>Web</option>
-                <option value='Software Engineering'>Software Engineering</option>
-                <option value='AI'>AI</option>
-                <option value='Technology'>Technology</option>
+                <option value="">All</option>
+                <option value="Web">Web</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="AI">AI</option>
+                <option value="Technology">Technology</option>
               </select>
             </div>
           </div>
@@ -96,11 +96,33 @@ export default function PostSection() {
               </div>
             )}
 
-            <div ref={ref} className="text-center text-xl text-gray-500 mt-6">
+            {/* Scroll Loader Trigger with Animation */}
+            <motion.div
+              ref={ref}
+              className="text-center text-xl text-gray-500 mt-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               {posts?.length < totalPosts && !isFetching && (
-                <p className="font-semibold">Scroll down to load more posts</p>
+                <motion.p
+                  className="font-semibold text-gray-500"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 10, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  Scroll down to load more posts...
+                </motion.p>
               )}
-            </div>
+
+              {/* Show Loading Spinner when Fetching More Data */}
+              {isFetching && (
+                <div className="flex justify-center items-center mt-4">
+                  <FaSpinner className="animate-spin text-gray-500" size={30} />
+                </div>
+              )}
+            </motion.div>
           </div>
         </section>
       </section>

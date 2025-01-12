@@ -1,156 +1,101 @@
-'use client';
+'use client'
 
 import { useAppSelector } from '@/redux/hooks';
 import { TUser } from '@/redux/features/authentication/authSlice';
 import { useGetSingleUserQuery } from '@/redux/features/user/userApi';
-import { FaUserFriends, FaUserPlus } from 'react-icons/fa';
+import { FaUserFriends, FaUserPlus } from 'react-icons/fa'; // Import icons
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-
-// Define a type for followers and following data structure
-interface Follower {
-  _id: string;
-  image: string;
-  name: string;
-  email: string;
-}
-
-const fetchUserById = async (userId: string): Promise<Follower> => {
-  const response = await fetch(`/api/users/${userId}`);
-  const data = await response.json();
-  return data;
-};
 
 const MyFollowers = () => {
-  const loggedUser = useAppSelector(state => state.auth.user);
-  const { data } = useGetSingleUserQuery(loggedUser?.email as string);
-  const userDetails: TUser = data?.data || {};
-  const { followers = [], following = [] } = userDetails;
+    const loggedUser = useAppSelector(state => state.auth.user);
 
-  const [fullFollowers, setFullFollowers] = useState<Follower[]>([]);
-  const [fullFollowing, setFullFollowing] = useState<Follower[]>([]);
+    const { data } = useGetSingleUserQuery(loggedUser?.email as string);
+    const userDetails: TUser = data?.data || {};
+    const { followers, following } = userDetails;
 
-  useEffect(() => {
-    const fetchFollowers = async () => {
-      if (followers.length > 0) {
-        const fetchedFollowers = await Promise.all(
-          followers.map(async (id: string) => await fetchUserById(id))
-        );
-        setFullFollowers(fetchedFollowers);
-      }
-    };
+    return (
+        <div className="container mx-auto p-4">
+            {/* Header Section with Gradient */}
+            <div className="py-6 px-8 bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 text-white text-center rounded-xl shadow-lg">
+                <h2 className="text-3xl font-semibold">Followers & Following</h2>
+                <p className="text-sm mt-2">People following you to stay updated, and Following: Accounts you follow for their updates.</p>
+            </div>
 
-    const fetchFollowing = async () => {
-      if (following.length > 0) {
-        const fetchedFollowing = await Promise.all(
-          following.map(async (id: string) => await fetchUserById(id))
-        );
-        setFullFollowing(fetchedFollowing);
-      }
-    };
+            {/* Followers Table with Gradient Background */}
+            <div className="bg-gradient-to-r from-blue-100 to-teal-100 dark:from-blue-800 dark:to-teal-700 shadow-md rounded-xl p-6 mb-6">
+                <h2 className="text-2xl font-semibold flex items-center mb-4 text-blue-700 dark:text-teal-200">
+                    <FaUserFriends className="mr-2" />
+                    Followers
+                </h2>
+                <p className="text-blue-500">Total Followers: {followers?.length}</p>
+                <div className="overflow-x-auto mt-4">
+                    <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+                        <thead>
+                            <tr className="bg-gradient-to-r from-teal-200 to-blue-200 dark:from-teal-600 dark:to-blue-600">
+                                <th className="p-4 border border-gray-300 dark:border-gray-700">Image</th>
+                                <th className="p-4 border border-gray-300 dark:border-gray-700">Name</th>
+                                <th className="p-4 border border-gray-300 dark:border-gray-700">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {followers?.map((follower) => (
+                                <tr key={follower?._id} className="hover:bg-gray-50 hover:dark:bg-gray-900">
+                                    <td className="p-4 border border-gray-300 dark:border-gray-700">
+                                        <Image
+                                            src={follower?.image}
+                                            alt={follower?.name}
+                                            width={50}
+                                            height={50}
+                                            className="rounded-full"
+                                        />
+                                    </td>
+                                    <td className="p-4 border border-gray-300 dark:border-gray-700">{follower?.name}</td>
+                                    <td className="p-4 border border-gray-300 dark:border-gray-700">{follower?.email}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    fetchFollowers();
-    fetchFollowing();
-  }, [followers, following]);
-
-  return (
-    <section className="max-w-[1300px] mx-auto px-4 my-4 lg:my-8">
-      <div className="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="py-6 px-8 bg-gradient-to-r from-black to-gray-800 text-white text-center">
-          <h2 className="text-2xl font-bold">User Dashboard</h2>
-          <p className="text-sm mt-1">Manage your followers and following</p>
+            {/* Following Table with Gradient Background */}
+            <div className="bg-gradient-to-r from-pink-100 to-yellow-100 dark:from-pink-800 dark:to-yellow-700 shadow-md rounded-xl p-6">
+                <h2 className="text-2xl font-semibold flex items-center mb-4 text-pink-700 dark:text-yellow-200">
+                    <FaUserPlus className="mr-2" />
+                    Following
+                </h2>
+                <p className="text-pink-500">Total Following: {following?.length}</p>
+                <div className="overflow-x-auto mt-4">
+                    <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+                        <thead>
+                            <tr className="bg-gradient-to-r from-yellow-200 to-pink-200 dark:from-yellow-600 dark:to-pink-600">
+                                <th className="p-4 border border-gray-300 dark:border-gray-700">Image</th>
+                                <th className="p-4 border border-gray-300 dark:border-gray-700">Name</th>
+                                <th className="p-4 border border-gray-300 dark:border-gray-700">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {following?.map((followedUser) => (
+                                <tr key={followedUser?._id} className="hover:bg-gray-50 hover:dark:bg-gray-900">
+                                    <td className="p-4 border border-gray-300 dark:border-gray-700">
+                                        <Image
+                                            src={followedUser?.image}
+                                            alt={followedUser?.name}
+                                            width={50}
+                                            height={50}
+                                            className="rounded-full"
+                                        />
+                                    </td>
+                                    <td className="p-4 border border-gray-300 dark:border-gray-700">{followedUser?.name}</td>
+                                    <td className="p-4 border border-gray-300 dark:border-gray-700">{followedUser?.email}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
-        {/* Followers Table */}
-        <div className="p-6 bg-white">
-          <h3 className="text-xl font-semibold flex items-center mb-4 text-gray-800">
-            <FaUserFriends className="mr-2 text-gray-800" />
-            Followers
-          </h3>
-          <p className="text-gray-500 mb-4">Total Followers: {fullFollowers.length}</p>
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-sm text-gray-700 border">
-              <thead className="bg-gray-100 border-b">
-                <tr className="text-left font-semibold text-[13px] md:text-sm uppercase text-gray-600">
-                  <th className="px-6 py-4 border-r">Image</th>
-                  <th className="px-6 py-4 border-r">Name</th>
-                  <th className="px-6 py-4">Email</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {fullFollowers.map((follower: Follower) => (
-                  <tr key={follower._id} className="border-b hover:bg-gray-100 transition-colors">
-                    <td className="px-6 py-4 border-r flex justify-center items-center">
-                      <Image
-                        width={40}
-                        height={40}
-                        alt="profile"
-                        src={follower.image}
-                        className="w-10 h-10 rounded-full object-cover"
-                      />
-                    </td>
-                    <td className="px-6 py-4 border-r text-gray-800">{follower.name}</td>
-                    <td className="px-6 py-4 text-gray-800">{follower.email}</td>
-                  </tr>
-                ))}
-                {fullFollowers.length === 0 && (
-                  <tr>
-                    <td colSpan={3} className="py-10 text-center text-gray-500">
-                      No Followers Yet
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Following Table */}
-        <div className="p-6 bg-white mt-4">
-          <h3 className="text-xl font-semibold flex items-center mb-4 text-gray-800">
-            <FaUserPlus className="mr-2" />
-            Following
-          </h3>
-          <p className="text-gray-500 mb-4">Total Following: {fullFollowing.length}</p>
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-sm text-gray-700 border">
-              <thead className="bg-gray-100 border-b">
-                <tr className="text-left font-semibold text-[13px] md:text-sm uppercase text-gray-600">
-                  <th className="px-6 py-4 border-r">Image</th>
-                  <th className="px-6 py-4 border-r">Name</th>
-                  <th className="px-6 py-4">Email</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {fullFollowing.map((followedUser: Follower) => (
-                  <tr key={followedUser._id} className="border-b hover:bg-gray-100 transition-colors">
-                    <td className="px-6 py-4 border-r flex justify-center items-center">
-                      <Image
-                        width={40}
-                        height={40}
-                        alt="profile"
-                        src={followedUser.image}
-                        className="w-10 h-10 rounded-full object-cover"
-                      />
-                    </td>
-                    <td className="px-6 py-4 border-r text-gray-800">{followedUser.name}</td>
-                    <td className="px-6 py-4 text-gray-800">{followedUser.email}</td>
-                  </tr>
-                ))}
-                {fullFollowing.length === 0 && (
-                  <tr>
-                    <td colSpan={3} className="py-10 text-center text-gray-500">
-                      Not Following Anyone Yet
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+    );
 };
 
 export default MyFollowers;

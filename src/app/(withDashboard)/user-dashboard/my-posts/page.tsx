@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { useGetPostsQuery } from "@/redux/features/posts/postApi";
@@ -15,13 +15,13 @@ export default function PostSection() {
   const posts = data?.data?.posts || [];
 
   return (
-    <section className="my-2">
+    <section className="my-4">
       <section>
-        {/* Filtering section */}
-        <div className="flex justify-end my-1 mt-3 md:mt-0 gap-2 md:gap-3">
+        {/* Filtering Section */}
+        <div className="flex flex-wrap justify-between gap-4 md:gap-6 mt-4">
           {/* Search Input for Large Screens */}
-          <div className="hidden relative md:flex items-center">
-            <span className="absolute left-4">
+          <div className="relative flex items-center w-full md:w-72 shadow-lg rounded-lg p-3">
+            <span className="absolute left-4 text-gray-500">
               <TfiSearch />
             </span>
             <input
@@ -29,84 +29,63 @@ export default function PostSection() {
                 setFilterQuery((prev) => ({ ...prev, searchTerm: e.target.value }))
               }
               type="text"
-              className="rounded-full outline-none placeholder:text-gray-500 py-2 pl-10 pr-2 bg-white shadow-md lg:w-72"
+              className="w-full py-2 pl-10 pr-3 rounded-lg border border-gray-300 outline-none placeholder:text-gray-500"
               placeholder="Search..."
             />
           </div>
 
-          {/* Search Input for Small Screens */}
-          <div className="dropdown md:hidden">
-            <h3
-              tabIndex={0}
-              role="button"
-              className="bg-white flex items-center gap-2 shadow-md p-3 px-5 rounded-full text-sm md:text-base"
+          {/* Sorting by Upvote */}
+          <div className="w-full md:w-auto">
+            <select
+              onChange={(e) =>
+                setFilterQuery((prev) => ({ ...prev, sortByUpvote: e.target.value }))
+              }
+              className="w-full md:w-auto p-3 rounded-lg bg-white shadow-lg border border-gray-300 text-sm"
             >
-              <TfiSearch />
-            </h3>
-            <ul tabIndex={0} className="dropdown-content menu rounded-md z-[1] w-52">
-              <div className="relative md:flex items-center">
-                <span className="absolute left-4 top-7">
-                  <TfiSearch />
-                </span>
-                <input
-                  onChange={(e) =>
-                    setFilterQuery((prev) => ({ ...prev, searchTerm: e.target.value }))
-                  }
-                  type="text"
-                  className="rounded-md outline-none placeholder:text-gray-500 py-2 pl-10 pr-2 bg-white shadow-2xl border-t-2 border-gray-200 w-72 h-16"
-                  placeholder="Search..."
-                />
-              </div>
-            </ul>
+              <option disabled selected>
+                Sort by Upvote
+              </option>
+              <option value="-1">Most Upvoted</option>
+              <option value="1">Most Downvoted</option>
+            </select>
           </div>
 
-          {/* Sorting by Upvote */}
-          <select
-            onChange={(e) =>
-              setFilterQuery((prev) => ({ ...prev, sortByUpvote: e.target.value }))
-            }
-            className="max-w-xs p-2 shadow-md rounded-full outline-1 text-xs md:text-sm"
-          >
-            <option disabled selected>
-              Sort by Upvote
-            </option>
-            <option value="-1">Most Upvoted</option>
-            <option value="1">Most Downvoted</option>
-          </select>
-
           {/* Category Filter */}
-          <select
-            onChange={(e) =>
-              setFilterQuery((prev) => ({ ...prev, category: e.target.value }))
-            }
-            className="p-2 shadow-md text-xs md:text-sm rounded-full"
-          >
-            <option disabled selected>
-              Select Category
-            </option>
-            <option value="">All</option>
-            <option value="Web">Web</option>
-            <option value="Software Engineering">Software Engineering</option>
-            <option value="AI">AI</option>
-            <option value="Technology">Technology</option>
-          </select>
+          <div className="w-full md:w-auto">
+            <select
+              onChange={(e) =>
+                setFilterQuery((prev) => ({ ...prev, category: e.target.value }))
+              }
+              className="w-full md:w-auto p-3 rounded-lg bg-white shadow-lg border border-gray-300 text-sm"
+            >
+              <option disabled selected>
+                Select Category
+              </option>
+              <option value="">All</option>
+              <option value="Web">Web</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="AI">AI</option>
+              <option value="Technology">Technology</option>
+              <option value="Reality">Reality</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
         </div>
 
-        {/* Grid section */}
-        <div className="grid grid-cols-1 gap-3 mb-8">
+        {/* Grid Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
           {posts.length > 0 ? (
             posts.map((post: TPost) => <MiniPostCard key={post._id} post={post} />)
           ) : (
             // Display message when there are no posts and fetching is complete
             !isFetching && (
               <p className="text-2xl font-bold mt-10 text-gray-600 text-center">
-  You do not have any posts, create one and connect with us! 🌟
-</p>
-
+                You do not have any posts, create one and connect with us! 🌟
+              </p>
             )
           )}
 
-          {/* Card placeholders while fetching */}
+          {/* Card Placeholders while fetching */}
           {isFetching && [1, 2].map((num) => <PostSkeleton key={num} />)}
         </div>
       </section>
