@@ -13,7 +13,8 @@ const Home = () => {
     return (
         <>
           {currentUser && <CreatePost/>}
-           <PostSection/>
+           <PostSection/> 
+      
         </>
     );
 };

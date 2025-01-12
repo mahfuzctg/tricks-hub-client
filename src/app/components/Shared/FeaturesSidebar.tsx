@@ -38,7 +38,7 @@ const FeaturesSidebar = () => {
     <>
       {user ? (
         // Sidebar for logged-in users
-        <div className="w-64 bg-white text-black p-4 space-y-7 shadow-md">
+        <div className="w-64 bg-white text-black p-4 space-y-2 ">
           {/* New Feeds Section */}
           <div className="space-y-4">
             <h2 className="text-gray-700 text-sm font-semibold">New Feeds</h2>
@@ -87,7 +87,16 @@ const FeaturesSidebar = () => {
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <FaHome className="text-black" />
                   </div>
-                  <span className="font-medium">About Us 📚</span>
+                  <span className="font-medium">Premium 📚</span>
+                </Link>
+              </li>
+            
+              <li className="flex items-center space-x-4">
+                <Link href="/latest-event" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/latest-event')}`}>
+                  <div className="p-2 rounded-full bg-gray-200 text-xl">
+                    <FaCalendarAlt className="text-black" />
+                  </div>
+                  <span className="font-medium">Latest Event 🗓️</span>
                 </Link>
               </li>
               <li className="flex items-center space-x-4">
@@ -95,15 +104,7 @@ const FeaturesSidebar = () => {
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <MdWifiCalling1 className="text-black" />
                   </div>
-                  <span className="font-medium">Contact Us 📞</span>
-                </Link>
-              </li>
-              <li className="flex items-center space-x-4">
-                <Link href="/latest-event" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/latest-event')}`}>
-                  <div className="p-2 rounded-full bg-gray-200 text-xl">
-                    <FaCalendarAlt className="text-black" />
-                  </div>
-                  <span className="font-medium">Latest Event 🗓️</span>
+                  <span className="font-medium">Supports 📞</span>
                 </Link>
               </li>
             </ul>
@@ -171,7 +172,7 @@ const FeaturesSidebar = () => {
             <h2 className="text-gray-700 text-sm font-semibold">More Pages</h2>
             <ul className="space-y-4 flex flex-col">
               <li className="flex items-center space-x-4">
-                <Link href="/about" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/about')}`}>
+                <Link href="/about" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/premium')}`}>
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <FaHome className="text-black" />
                   </div>
@@ -183,11 +184,11 @@ const FeaturesSidebar = () => {
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <MdWifiCalling1 className="text-black" />
                   </div>
-                  <span className="font-medium">Contact Us 📞</span>
+                  <span className="font-medium">Supports 📞</span>
                 </Link>
               </li>
               <li className="flex items-center space-x-4">
-                <Link href="/latest-event" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/latest-event')}`}>
+                <Link href="/latest-event" className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass('/latest')}`}>
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <FaCalendarAlt className="text-black" />
                   </div>

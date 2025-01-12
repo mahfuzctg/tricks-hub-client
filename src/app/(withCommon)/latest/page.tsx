@@ -3,18 +3,20 @@
 import { useEffect, useState } from "react";
 import { useGetPostsQuery } from "@/redux/features/posts/postApi";
 
-
 import { TfiSearch } from "react-icons/tfi";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { FaSpinner } from "react-icons/fa";
+import PostCard from "../(home)/components/posts/PostCard";
 import { TPost } from "../(home)/components/CreatePost/CreatePostModal";
 import PostSkeleton from "../(home)/components/posts/PostSkeleton";
-import PostCard from "../(home)/components/posts/PostCard";
 
-export default function PremiumPostSection() {
+
+
+export default function PostSection() {
   const [filterQuery, setFilterQuery] = useState({
     limit: 10,
+    sortByCreatedAt: "desc", // Sort by creation date (newest first)
   });
   const { data, isFetching } = useGetPostsQuery(filterQuery);
   const { totalPosts, posts } = data?.data || {};
@@ -31,9 +33,6 @@ export default function PremiumPostSection() {
       }));
     }
   }, [inView, posts, totalPosts, isFetching]);
-
-  // Filter only premium posts
-  const premiumPosts = posts?.filter((post: TPost) => post.isPremium);
 
   return (
     <section className="py-6">
@@ -53,8 +52,8 @@ export default function PremiumPostSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-7 mb-8">
-          {premiumPosts?.length > 0 ? (
-            premiumPosts.map((post: TPost) => <PostCard key={post._id} post={post} />)
+          {posts?.length > 0 ? (
+            posts.map((post: TPost) => <PostCard key={post._id} post={post} />)
           ) : (
             <div className="text-center text-xl text-gray-500 mt-6">
               {isFetching ? (
@@ -62,8 +61,8 @@ export default function PremiumPostSection() {
               ) : (
                 <div className="flex flex-col items-center">
                   <span className="text-4xl mb-2">😢</span>
-                  <p className="font-semibold">No premium posts found...</p>
-                  <p className="text-gray-400 mt-1">Check back later for more premium content!</p>
+                  <p className="font-semibold">No new posts found...</p>
+                  <p className="text-gray-400 mt-1">Check back later for fresh content!</p>
                 </div>
               )}
             </div>
@@ -76,7 +75,7 @@ export default function PremiumPostSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {premiumPosts?.length < totalPosts && !isFetching && (
+            {posts?.length < totalPosts && !isFetching && (
               <motion.p
                 className="font-semibold text-gray-500"
                 initial={{ y: 10, opacity: 0 }}
@@ -84,7 +83,7 @@ export default function PremiumPostSection() {
                 exit={{ y: 10, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                Scroll down to load more premium posts...
+                Scroll down to load more new posts...
               </motion.p>
             )}
 

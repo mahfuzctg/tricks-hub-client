@@ -9,6 +9,8 @@ import RightSidebar from "./(home)/components/RightSidebar";
 import Login from "./login/page"; // Import login page
 import Register from "./register/page"; // Import register page
 
+
+
 const CommonLayout = ({ children }: { children: ReactNode }) => {
   const user = useAppSelector(state => state.auth.user);
   const [loading, setLoading] = useState(true); // To manage the loading state
@@ -53,8 +55,10 @@ const CommonLayout = ({ children }: { children: ReactNode }) => {
         )}
 
         {/* Main content */}
-        <div className="w-full h-screen overflow-auto scrollbar-hide pb-24">
+        <div className="w-full h-screen overflow-auto scrollbar-hide pb-24 ">
           {children}
+           
+        
         </div>
 
         {/* Right Sidebar is visible only for larger screens and logged-in users */}

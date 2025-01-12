@@ -27,7 +27,7 @@ import EditCommentModal from "./EditCommentModal";
 import { FaPen } from 'react-icons/fa';
 import { jsPDF } from "jspdf";
 import { HiDotsHorizontal, HiDotsVertical } from "react-icons/hi";
-
+import parse from "html-react-parser";
 
 // Import necessary components from react-share
 import { 
@@ -170,6 +170,20 @@ export default function PostCard({ post }: { post: TPost }) {
     setShowShareOptions(false); // Close options after a share button is clicked
   };
 
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Toggle the description view
+  const toggleDescription = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  // Determine the text to display
+  const descriptionPreview = isExpanded
+    ? description // Show full description when expanded
+    : `${description.slice(0, 200)}...`; // Show preview (first 50 characters)
+
+
   return (
     <div ref={contentRef} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 w-full mx-auto lg:mb-6">
       {/* Header with User Info */}
@@ -234,13 +248,20 @@ export default function PostCard({ post }: { post: TPost }) {
         </div>
       </div>
         
+        {/* descriptions */}
+     
+        <div className="text-gray-700 dark:text-gray-400 mb-4 text-base lg:text-lg">
+      {/* Render the parsed HTML content */}
+      <div>{parse(descriptionPreview)}</div>
 
-
-
-  
-      {/* Post Description */}
-      <div className="text-gray-700 dark:text-gray-400 mb-4 text-base lg:text-lg" dangerouslySetInnerHTML={{ __html: description }}></div>
-
+      {/* Toggle Button placed at the end of the text */}
+      <button
+        onClick={toggleDescription}
+        className="text-gray-700 dark:text-gray-400 mb-4 text-base mt-2"
+      >
+        {isExpanded ? "Read Less" : "Read More"}
+      </button>
+    </div>
       {/* Images Section */}
       <Link href={`/details/${_id}`}>
         <div className="pointer-events-none">
