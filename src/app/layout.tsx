@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/lib/Providers";
-import PremiumPostSection from "./(withCommon)/premium/page";
+
 
 
 

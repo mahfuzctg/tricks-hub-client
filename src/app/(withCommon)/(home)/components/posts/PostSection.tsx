@@ -128,4 +128,4 @@ export default function PostSection() {
       </section>
     </section>
   );
-}
+}  

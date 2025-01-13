@@ -82,7 +82,7 @@ export default function PremiumPostSection() {
             premiumPosts.map((post: TPost) => <PostCard key={post._id} post={post} />)
           ) : (
             <div className="text-center text-xl text-gray-500 mt-6">
-              {isFetching ? (
+              {isFetching ? (                        
                 [1, 2].map((num) => <PostSkeleton key={num} />)
               ) : (
                 <div className="flex flex-col items-center">

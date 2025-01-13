@@ -216,8 +216,8 @@ export default function PostCard({ post }: { post: TPost }) {
         <div className="ml-auto flex items-center gap-2 relative">
 
              {/* Premium Icon */}
-             {post.isPremium} 
-            <FaProductHunt className="text-gray-500 cursor-pointer text-xl" />
+             {post.isPremium &&   <FaProductHunt className="text-gray-500 cursor-pointer text-xl" />} 
+          
           
 
           {/* 3-dot Icon */}
