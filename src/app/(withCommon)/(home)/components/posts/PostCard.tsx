@@ -40,6 +40,7 @@ import {
   LinkedinShareButton,
   LineIcon
 } from "react-share";
+import { Span } from "next/dist/trace";
 
 export default function PostCard({ post }: { post: TPost }) {
   const { register, handleSubmit, reset } = useForm();
@@ -215,9 +216,9 @@ export default function PostCard({ post }: { post: TPost }) {
         <div className="ml-auto flex items-center gap-2 relative">
 
              {/* Premium Icon */}
-             {post.isPremium && (
-            <FaProductHunt className="text-gray-500 cursor-pointer text-2xl" />
-          )}
+             {post.isPremium} 
+            <FaProductHunt className="text-gray-500 cursor-pointer text-xl" />
+          
 
           {/* 3-dot Icon */}
           <HiDotsVertical

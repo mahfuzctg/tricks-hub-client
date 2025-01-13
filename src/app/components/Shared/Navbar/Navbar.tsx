@@ -34,16 +34,16 @@ export default function Navbar() {
 
   const navLinks = (
     <>
-      <li><Link href="/" className={`cursor-pointer font-semibold ${pathName === '/' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>🏠 Feed</Link></li>
-      <li><Link href="/premium" className={`cursor-pointer font-semibold ${pathName === '/premium' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📖 Premium</Link></li>
-      <li><Link href="/latest" className={`cursor-pointer font-semibold ${pathName === '/latest' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>🔔 Latest</Link></li>
-      <li><Link href="/contact" className={`cursor-pointer font-semibold ${pathName === '/contact' ? 'text-gray-900' : 'text-gray-600'} px-4 py-[3px] transition hover:text-gray-400`}>📞 Supports</Link></li>
+      <li><Link href="/" className={`cursor-pointer font-semibold ${pathName === '/' ? 'text-gray-900' : 'text-gray-600'}  py-[3px] transition hover:text-gray-400`}>🏠 Feed</Link></li>
+      <li><Link href="/premium" className={`cursor-pointer font-semibold ${pathName === '/premium' ? 'text-gray-900' : 'text-gray-600'} py-[3px] transition hover:text-gray-400`}>📖 Premium</Link></li>
+      <li><Link href="/latest" className={`cursor-pointer font-semibold ${pathName === '/latest' ? 'text-gray-900' : 'text-gray-600'}  py-[3px] transition hover:text-gray-400`}>🔔 Latest</Link></li>
+      <li><Link href="/contact" className={`cursor-pointer font-semibold ${pathName === '/contact' ? 'text-gray-900' : 'text-gray-600'} py-[3px] transition hover:text-gray-400`}>📞 Supports</Link></li>
     </>
   );
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
-      <section className="max-w-[1500px] mx-auto px-4 flex justify-between md:pt-2 h-16 md:h-[96px] bg-gray-50 dark:bg-gray-900">
+      <section className="max-w-[1300px] mx-auto px-4 flex justify-between md:pt-2 h-16 md:h-[96px] bg-gray-50 dark:bg-gray-900">
         {/* Logo section */}
         <div className="flex items-center gap-1">
   <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-black to-gray-500 font-extrabold text-[22px] md:text-2xl xl:text-3xl">Tricks Hub 🌐</h3>

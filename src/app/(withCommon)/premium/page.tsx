@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useGetPostsQuery } from "@/redux/features/posts/postApi";
-
-
 import { TfiSearch } from "react-icons/tfi";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
@@ -15,7 +13,11 @@ import PostCard from "../(home)/components/posts/PostCard";
 export default function PremiumPostSection() {
   const [filterQuery, setFilterQuery] = useState({
     limit: 10,
+    searchTerm: "",   // To store the search term
+    sortByUpvote: "", // To store the sort option for upvotes
+    category: "",     // To store the category filter
   });
+
   const { data, isFetching } = useGetPostsQuery(filterQuery);
   const { totalPosts, posts } = data?.data || {};
 
@@ -49,6 +51,29 @@ export default function PremiumPostSection() {
               className="w-full rounded-full outline-none placeholder:text-gray-500 py-2 pl-10 pr-4 bg-white shadow-md focus:ring-2 focus:ring-blue-500"
               placeholder="Search..."
             />
+          </div>
+
+          <div className="flex gap-4 items-center">
+            <select
+              onChange={(e) => setFilterQuery((prev) => ({ ...prev, sortByUpvote: e.target.value }))}
+              className="p-2 shadow-md rounded-full outline-1 text-xs md:text-sm bg-white"
+            >
+              <option disabled selected>Sort by Upvote</option>
+              <option value="-1">Most Upvoted</option>
+              <option value="1">Most Downvoted</option>
+            </select>
+
+            <select
+              onChange={(e) => setFilterQuery((prev) => ({ ...prev, category: e.target.value }))}
+              className="p-2 shadow-md rounded-full text-xs md:text-sm bg-white"
+            >
+              <option disabled selected>Select Category</option>
+              <option value="">All</option>
+              <option value="Web">Web</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="AI">AI</option>
+              <option value="Technology">Technology</option>
+            </select>
           </div>
         </div>
 
