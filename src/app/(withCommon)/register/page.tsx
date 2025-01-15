@@ -63,10 +63,10 @@ export default function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-white dark:bg-gray-900 px-4">
-      <div className="w-full max-w-2xl bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+    <div className="flex items-center justify-center h-screen  px-4">
+      <div className="w-full max-w-2xl bg-white  shadow-lg rounded-lg p-4">
         <div className="text-center pb-5">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">🌟 CREATE NEW ACCOUNT!</h1>
+          <h1 className="text-3xl font-bold text-gray-800 ">🌟 CREATE NEW ACCOUNT!</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,7 +75,7 @@ export default function Register() {
             <input
               type="text"
               placeholder="👤 Your Name"
-              className="w-full py-3 pl-12 pr-3 border-2 rounded-md bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 border-gray-300 text-gray-700 focus:border-blue-600"
+              className="w-full py-3 pl-12 pr-3 border-2 rounded-md bg-white   border-gray-300 text-gray-700 focus:border-blue-600"
               {...register('name', { required: true, minLength: 3, maxLength: 20 })}
             />
             <span className="text-2xl absolute left-4 text-gray-400"> <IoPersonOutline /></span>
@@ -87,7 +87,7 @@ export default function Register() {
             <input
               type="email"
               placeholder="✉️ Email"
-              className="w-full py-3 pl-12 pr-3 border-2 rounded-md bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 border-gray-300 text-gray-700 focus:border-blue-600"
+              className="w-full py-3 pl-12 pr-3 border-2 rounded-md bg-white   border-gray-300 text-gray-700 focus:border-blue-600"
               {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
             />
             <span className="text-2xl absolute left-4 text-gray-400"> <AiOutlineMail /></span>
@@ -99,7 +99,7 @@ export default function Register() {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="🔒 Password"
-              className="w-full py-3 pl-12 pr-12 border-2 rounded-md bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 border-gray-300 text-gray-700 focus:border-blue-600"
+              className="w-full py-3 pl-12 pr-12 border-2 rounded-md bg-white   border-gray-300 text-gray-700 focus:border-blue-600"
               {...register('password', { required: true })}  // Only require password, no additional validation
             />
             <span className="text-2xl absolute left-4 text-gray-400"><GoUnlock /></span>
@@ -121,7 +121,7 @@ export default function Register() {
               {...register('image', { required: true })}
               onChange={(e) => handleImageChange(e)}
               type="file"
-              className={`file-input ${imagePreview ? 'h-20 pl-20' : 'pl-8 h-14'} file-input-ghost w-full bg-white dark:bg-gray-900 outline-dashed outline-2 rounded-md outline-gray-300/40 dark:outline-gray-700`}
+              className={`file-input ${imagePreview ? 'h-20 pl-20' : 'pl-8 h-14'} file-input-ghost w-full bg-white  outline-dashed outline-2 rounded-md outline-gray-300/40 `}
             />
             <span className="text-2xl absolute left-4 text-gray-400">
               {imagePreview ? (
@@ -133,7 +133,7 @@ export default function Register() {
 
           {/* Terms Checkbox */}
           <div className="mt-4">
-            <label className="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold text-sm">
+            <label className="flex items-center gap-2 text-gray-500 font-semibold text-sm">
               <input type="checkbox" {...register('terms', { required: true })} />
               📜 I agree to the Terms and Conditions
             </label>
@@ -145,14 +145,14 @@ export default function Register() {
 
           {/* Submit Button */}
           <div className="mt-6">
-            <button className="bg-gray-800 dark:bg-gray-800 w-full p-3 text-zinc-200 rounded-md font-semibold flex justify-center items-center hover:bg-zinc-600 text-sm md:text-base transition-all" type="submit">
+            <button className="bg-black  w-full p-3 text-zinc-200 rounded-md font-semibold flex justify-center items-center hover:bg-zinc-600 text-sm md:text-base transition-all" type="submit">
               {loading ? <ClipLoader color='#ffffff' loading={loading} size={25} /> : 'Register'}
             </button>
           </div>
 
           {/* Login Link */}
           <div className="mt-2 text-center">
-            <h4 className="text-sm font-semibold text-black dark:text-gray-700">
+            <h4 className="text-sm font-semibold text-black ">
               Already Have An Account? <Link href='/login' className="text-black"> Login</Link>
             </h4>
           </div>

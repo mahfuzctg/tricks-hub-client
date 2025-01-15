@@ -42,8 +42,8 @@ export default function Navbar() {
   );
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
-      <section className="max-w-[1300px] mx-auto px-4 flex justify-between md:pt-2 h-16 md:h-[96px] bg-gray-50 dark:bg-gray-900">
+    <div className="bg-gray-50 ">
+      <section className="max-w-[1300px] mx-auto px-4 flex justify-between md:pt-2 h-16 md:h-[96px] bg-gray-50 ">
         {/* Logo section */}
         <div className="flex items-center gap-1">
   <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-black to-gray-500 font-extrabold text-[22px] md:text-2xl xl:text-3xl">Tricks Hub 🌐</h3>
@@ -60,17 +60,17 @@ export default function Navbar() {
         <div className="flex items-center justify-center gap-2 z-50">
           <div className="mr-3 md:mr-5 lg:mr-0 rounded-full text-xl md:text-[22px] lg:text-2xl text-black flex gap-5 md:gap-6 items-center">
             {user && (
-              <div className="flex items-center gap-3 md:gap-6 text-2xl md:text-[26px] text-gray-500 dark:text-gray-400">
-                <span><IoIosNotificationsOutline className="text-gray-600 dark:text-gray-400" title="Notifications" /></span>
-                <span className="text-xl md:text-[23px] xl:text-2xl hidden md:block"><RxDashboard className="text-gray-600 dark:text-gray-400" title="Dashboard" /></span>
-                <span className="hidden md:block"><IoSettingsOutline className="text-gray-600 dark:text-gray-400" title="Settings" /></span>
+              <div className="flex items-center gap-3 md:gap-6 text-2xl md:text-[26px] text-gray-500 ">
+                <span><IoIosNotificationsOutline className="text-gray-600 " title="Notifications" /></span>
+                <span className="text-xl md:text-[23px] xl:text-2xl hidden md:block"><RxDashboard className="text-gray-600 " title="Dashboard" /></span>
+                <span className="hidden md:block"><IoSettingsOutline className="text-gray-600 " title="Settings" /></span>
               </div>
             )}
 
             <div className="dropdown dropdown-end flex items-center justify-center gap-2 z-20">
               {!user ? (
                 <Link href="/login">
-                  <button className="px-2 md:px-8 text-[13px] md:text-sm md:py-2 rounded-md transition bg-gray-800 dark:bg-gray-700 border border-gray-300 text-gray-50 hover:bg-gray-700 dark:hover:bg-gray-600 flex items-center font-semibold gap-2 whitespace-nowrap">
+                  <button className="px-2 md:px-8 text-[13px] md:text-sm md:py-2 rounded-md transition bg-gray-800  border border-gray-300 text-gray-50 hover:bg-gray-700 flex items-center font-semibold gap-2 whitespace-nowrap">
                     <AiOutlineUserDelete className="text-lg" /> Login
                   </button>
                 </Link>
@@ -85,8 +85,8 @@ export default function Navbar() {
                     className="dropdown size-8 lg:size-9 object-cover cursor-pointer rounded-full border border-gray-400"
                   />
                   {/* Dropdown Menu when hovering on Profile */}
-                  <ul tabIndex={0} className="dropdown-content p-3 mt-1 shadow-2xl bg-white dark:bg-gray-800 rounded-lg w-60 absolute top-full left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <li className="text-lg p-2 border-b dark:border-gray-600 font-semibold rounded text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                  <ul tabIndex={0} className="dropdown-content p-3 mt-1 shadow-2xl bg-white rounded-lg w-60 absolute top-full left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <li className="text-lg p-2 border-b  font-semibold rounded text-gray-600  flex items-center gap-2">
                       {user?.name || 'User'}{' '}
                       <Image
                         width={200}
@@ -97,12 +97,12 @@ export default function Navbar() {
                       />
                     </li>
                     <Link href={`/profile/${user?.email}`}>
-                      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><RiUserFill /> Profile</li>
+                      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500  p-1 rounded hover:text-gray-700 flex items-center gap-2"><RiUserFill /> Profile</li>
                     </Link>
                     <Link href={user?.role === 'admin' ? '/admin-dashboard/statistics' : '/user-dashboard/my-posts'}>
-                      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><MdDashboardCustomize /> Dashboard</li>
+                      <li className="text-base font-semibold cursor-pointer transition-all text-gray-500  p-1 rounded hover:text-gray-700 flex items-center gap-2"><MdDashboardCustomize /> Dashboard</li>
                     </Link>
-                    <li onClick={logoutUser} className="text-base font-semibold cursor-pointer transition-all text-gray-600 dark:text-gray-400 p-1 rounded hover:text-gray-700 flex items-center gap-2"><IoArrowRedoOutline /> Log out</li>
+                    <li onClick={logoutUser} className="text-base font-semibold cursor-pointer transition-all text-gray-600  p-1 rounded hover:text-gray-700 flex items-center gap-2"><IoArrowRedoOutline /> Log out</li>
                   </ul>
                 </div>
               )}
@@ -110,7 +110,7 @@ export default function Navbar() {
           </div>
 
           {/* Drawer toggle button */}
-          <label htmlFor="my-drawer" className="lg:hidden text-xl md:text-2xl text-gray-500 dark:text-gray-400 cursor-pointer" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
+          <label htmlFor="my-drawer" className="lg:hidden text-xl md:text-2xl text-gray-500  cursor-pointer" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
             {isDrawerOpen ? <IoIosClose /> : <HiOutlineMenu />} {/* Toggle between menu and close icons */}
           </label>
         </div>

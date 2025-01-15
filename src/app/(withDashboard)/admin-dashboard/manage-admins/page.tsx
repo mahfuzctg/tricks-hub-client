@@ -124,9 +124,9 @@ export default function ManageAdmins() {
     <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
       <div className="overflow-hidden">
         <table
-          className="min-w-full text-center text-sm inter-regular dark:border-neutral-500">
+          className="min-w-full text-center text-sm inter-regular ">
           <thead className="">
-            <tr className="bg-gray-200 h-10 text-gray-500 text-[12px] md:text-base ">
+            <tr className="bg-gray-200 h-10 text-gray-700 text-[12px] md:text-base ">
               <th
                 scope="col"
                 className="border-r px-6 py-0 md:py-2 lg:py-4 border-gray-300 rounded-l-lg">
@@ -181,17 +181,17 @@ export default function ManageAdmins() {
                  src={user.image} className="size-9 md:size-12  object-contain rounded-3xl" />
               </td>
               <td
-                className=" border-r font-medium text-sm md:text-lg  text-zinc-400 text-start md:text-center px-6 py-4 border-gray-300">
+                className=" border-r font-medium text-sm md:text-lg  text-gray-700 text-start md:text-center px-6 py-4 border-gray-300">
                 {user.name}
               </td>
 
               <td
-                className=" border-r font-medium text-sm md:text-lg  text-zinc-400 text-start md:text-center px-6 py-4 border-gray-300">
+                className=" border-r font-medium text-sm md:text-lg  text-gray-700 text-start md:text-center px-6 py-4 border-gray-300">
                 {user.email}
               </td>
 
               <td
-                className="whitespace-nowrap font-medium text-blue-600/70 text-sm md:text-lg border-r px-6 py-4 border-gray-300">
+                className="whitespace-nowrap font-medium text-gray-700 text-sm md:text-lg border-r px-6 py-4 border-gray-300">
                 {user.role}
               </td>
              
@@ -199,7 +199,7 @@ export default function ManageAdmins() {
               
               <td className="whitespace-nowrap font-medium border-r text-sm md:text-lg  px-6 py-4 border-gray-300">
              
-              <button className={`bg-blue-400 p-1 px-2 md:py-2  text-white rounded font-semibold transition-all hover:bg-blue-400 text-[12px] md:text-base `}
+              <button className={`bg-gray-700 p-1 px-2 md:py-2  text-white rounded font-semibold transition-all hover:bg-gray-700 text-[12px] md:text-base `}
              onClick={() => {
               setUpdateUserEmail(user.email!)
               setOpenUpdateModal(true)
@@ -236,7 +236,7 @@ export default function ManageAdmins() {
          
           </tbody>
         </table>
-        {!users?.length && <p className="text-xl text-center mt-44 text-gray-500"> No Users Yet </p>}
+        {!users?.length && <p className="text-xl text-center mt-44 text-gray-700"> No Users Yet </p>}
       </div>
     </div>
   </div>

@@ -93,29 +93,27 @@ export default function Login({ setOpen }: TProps) {
   };
 
   return (
-    <div className="hero min-h-screen flex items-center justify-center bg-white shadow-xl rounded-lg">
-      <div className="hero-content flex-col w-full md:w-96 p-8 bg-white rounded-lg shadow-2xl">
-        <div className="text-center text-black">
-          {/* Login with Demo Account */}
+    <div className="hero min-h-screen  flex items-center justify-center py-16 px-4">
+      <div className="hero-content w-full md:w-96 bg-white p-8 rounded-lg shadow-xl">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl lg:text-3xl text-black font-semibold mb-6 uppercase">Login Please</h1>
           <div className="border-b-2 pb-4 mb-6">
-            <h1 className="text-lg lg:text-xl text-black font-semibold mb-4">Login For Testing 🚀</h1>
-            <div className="flex justify-center gap-4">
+            <h2 className="text-sm text-gray-600 font-medium">Login with Demo Account</h2>
+            <div className="flex justify-center gap-4 mt-4">
               <button
                 onClick={() => setDemoUser({ email: 'mahfuz@gmail.com', password: 'xyz1234' })}
-                className="bg-gray-300 hover:bg-gray-200 p-3 rounded-md text-black font-medium text-sm shadow-md"
+                className="bg-gray-100 hover:bg-gray-200 py-2 px-4 rounded-md text-black font-medium text-sm shadow-md transition-colors"
               >
-                Login As User 👤
+                Login As User
               </button>
               <button
                 onClick={() => setDemoUser({ email: 'admin@gmail.com', password: 'xyz1234' })}
-                className="bg-gray-300 hover:bg-gray-200 p-3 rounded-md text-black font-medium text-sm shadow-md"
+                className="bg-gray-100 hover:bg-gray-200 py-2 px-4 rounded-md text-black font-medium text-sm shadow-md transition-colors"
               >
-                Login As Admin 🛠️
+                Login As Admin
               </button>
             </div>
           </div>
-
-          <h1 className="text-3xl lg:text-4xl text-black font-bold mb-8">Login to your Account 🔑</h1>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
@@ -123,12 +121,12 @@ export default function Login({ setOpen }: TProps) {
             <input
               onChange={() => setErrors({ emailError: '', passwordError: '' })}
               type="email"
-              placeholder="Email 📧"
-              className="w-full py-3 pl-12 pr-3 outline-none border-2 border-black rounded-md bg-gray-50 text-black focus:border-blue-500"
+              placeholder="Email Address"
+              className="w-full py-3 pl-12 pr-3 outline-none border-2 border-gray-300 rounded-md bg-gray-50 text-black focus:border-blue-500"
               name="email"
               defaultValue={demoUser?.email || ""}
             />
-            <span className="text-2xl absolute left-4 text-gray-400">
+            <span className="text-2xl absolute left-4 text-gray-500">
               <AiOutlineMail />
             </span>
             {errors?.emailError && <span className="text-red-500 text-sm">{errors?.emailError}</span>}
@@ -138,12 +136,12 @@ export default function Login({ setOpen }: TProps) {
             <input
               onChange={() => setErrors({ emailError: '', passwordError: '' })}
               type="password"
-              placeholder="Password 🔑"
-              className="w-full py-3 pl-12 pr-3 outline-none border-2 border-black rounded-md bg-gray-50 text-black focus:border-blue-500"
+              placeholder="Password"
+              className="w-full py-3 pl-12 pr-3 outline-none border-2 border-gray-300 rounded-md bg-gray-50 text-black focus:border-blue-500"
               name="password"
               defaultValue={demoUser?.password || ""}
             />
-            <span className="text-2xl absolute left-4 text-gray-400">
+            <span className="text-2xl absolute left-4 text-gray-500">
               <GoUnlock />
             </span>
             {errors?.passwordError && <span className="text-red-500 text-sm">{errors?.passwordError}</span>}
@@ -153,7 +151,7 @@ export default function Login({ setOpen }: TProps) {
 
           <div className="form-control">
             <button
-              className="bg-black hover:bg-gray-700 w-full p-3 text-white rounded-md font-semibold transition-all flex justify-center items-center"
+              className="bg-black hover:bg-gray-700 w-full py-3 text-white rounded-md font-semibold transition-all flex justify-center items-center"
               type="submit"
             >
               {loading ? (
@@ -165,7 +163,7 @@ export default function Login({ setOpen }: TProps) {
                   speedMultiplier={0.8}
                 />
               ) : (
-                'Login 🚀'
+                'Login'
               )}
             </button>
           </div>
@@ -174,7 +172,7 @@ export default function Login({ setOpen }: TProps) {
             <h4 className="font-semibold">
               Don&apos;t have an account?{' '}
               <Link href="/register">
-                <span className="text-black hover:text-gray-700">Register ✍️</span>
+                <span className="text-black hover:text-gray-700">Register</span>
               </Link>
             </h4>
           </div>

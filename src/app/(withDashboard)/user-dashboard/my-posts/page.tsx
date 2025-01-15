@@ -73,7 +73,7 @@ export default function PostSection() {
         </div>
 
         {/* Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 ">
           {posts.length > 0 ? (
             posts.map((post: TPost) => <MiniPostCard key={post._id} post={post} />)
           ) : (

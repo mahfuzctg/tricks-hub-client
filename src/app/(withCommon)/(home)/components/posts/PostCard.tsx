@@ -186,7 +186,7 @@ export default function PostCard({ post }: { post: TPost }) {
 
 
   return (
-    <div ref={contentRef} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 w-full mx-auto lg:mb-6">
+    <div ref={contentRef} className="bg-white  rounded-xl shadow-md p-6 w-full mx-auto lg:mb-6">
       {/* Header with User Info */}
 
        
@@ -205,9 +205,9 @@ export default function PostCard({ post }: { post: TPost }) {
         </section>
 
         <div className="ml-3">
-          <h2 className="text-lg font-semibold dark:text-gray-300">{authorInfo?.name}</h2>
-          <p className="text-sm md:text-base text-gray-500 dark:text-gray-400">
-            {category} • <time className="text-gray-500 dark:text-gray-400">
+          <h2 className="text-lg font-semibold ">{authorInfo?.name}</h2>
+          <p className="text-sm md:text-base text-gray-500 ">
+            {category} • <time className="text-gray-500 ">
               <TimeAgo date={createdAt!} />
             </time>
           </p>
@@ -222,23 +222,23 @@ export default function PostCard({ post }: { post: TPost }) {
 
           {/* 3-dot Icon */}
           <HiDotsVertical
-            className="text-gray-600 font-bold dark:text-gray-400 cursor-pointer text-2xl"
+            className="text-gray-600 font-bold  cursor-pointer text-2xl"
             onClick={() => setShowActions((prev) => !prev)}
           />
           
           {/* Conditional PDF/Print Icons */}
           {showActions && (
-            <div className="absolute top-full right-0 mt-2 bg-white dark:bg-gray-700 shadow-md rounded-md p-2 flex flex-col gap-2">
+            <div className="absolute top-full right-0 mt-2 bg-white shadow-md rounded-md p-2 flex flex-col gap-2">
               <button
                 onClick={reactToPrintFn}
-                className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-green-500"
+                className="flex items-center gap-2 text-gray-600  hover:text-green-500"
               >
                 <AiFillPrinter className="text-xl" />
                 <span>Print</span>
               </button>
               <button
                 onClick={generatePDF}
-                className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-red-500"
+                className="flex items-center gap-2 text-gray-600  hover:text-red-500"
               >
                 <FaFilePdf className="text-xl text-red-500" />
                 <span>PDF</span>
@@ -251,14 +251,14 @@ export default function PostCard({ post }: { post: TPost }) {
         
         {/* descriptions */}
      
-        <div className="text-gray-700 dark:text-gray-400 mb-4 text-base lg:text-lg">
+        <div className="text-gray-700  mb-4 text-base lg:text-lg">
       {/* Render the parsed HTML content */}
       <div>{parse(descriptionPreview)}</div>
 
       {/* Toggle Button placed at the end of the text */}
       <button
         onClick={toggleDescription}
-        className="text-gray-700 dark:text-gray-400 mb-4 text-base mt-2"
+        className="text-gray-700  mb-4 text-base mt-2"
       >
         {isExpanded ? "Read Less" : "Read More"}
       </button>
@@ -271,12 +271,12 @@ export default function PostCard({ post }: { post: TPost }) {
       </Link>
 
       {/* Likes, Dislikes, Comments, Rating, and Share Section */}
-      <div className="flex justify-between items-center mt-4 border-y dark:border-gray-600 py-2">
+      <div className="flex justify-between items-center mt-4 border-y py-2">
         <div className="flex space-x-6 text-gray-600">
           <VoteSection postId={_id as string} userId={user?._id as string} votes={votes!} voters={voters!} />
-          <div className="flex items-center gap-3 bg-gray-200/50 dark:bg-gray-900 rounded-full px-3 py-1">
+          <div className="flex items-center gap-3 bg-gray-200/50  rounded-full px-3 py-1">
             <BiCommentDetail className="cursor-pointer text-lg xl:text-xl text-gray-500" onClick={toggleCommentInput} />
-            <span className="font-semibold text-gray-600 dark:text-gray-400">{comments?.length}</span>
+            <span className="font-semibold text-gray-600 ">{comments?.length}</span>
           </div>
         </div>
  {/* // Share button and dropdown menu in the JSX */}
@@ -284,7 +284,7 @@ export default function PostCard({ post }: { post: TPost }) {
   {/* Button to open/close the share options */}
   <button
     onClick={toggleShareOptions}
-    className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-300 transition-colors"
+    className="flex items-center space-x-2 text-gray-600  hover:text-gray-300 transition-colors"
   >
     <FaShare className="cursor-pointer hover:scale-110 transition-transform" />
     <span>Share</span>
@@ -292,20 +292,20 @@ export default function PostCard({ post }: { post: TPost }) {
 
   {/* Conditionally rendered share options */}
   {showShareOptions && (
-    <div className="absolute top-full right-0 mt-2 bg-white dark:bg-gray-700 shadow-md rounded-md p-4 flex flex-col gap-2 z-10">
+    <div className="absolute top-full right-0 mt-2 bg-white  shadow-md rounded-md p-4 flex flex-col gap-2 z-10">
       
       {/* Facebook Share */}
       <FacebookShareButton url={postUrl} onClick={handleShareClick}>
         <div className="flex items-center gap-2 cursor-pointer">
           <FacebookIcon size={32} round /> {/* Facebook Icon */}
-          <span className="text-gray-700 dark:text-gray-300">Facebook</span>
+          <span className="text-gray-700 ">Facebook</span>
         </div>
       </FacebookShareButton>
       {/* Linkedin Share */}
       <LinkedinShareButton url={postUrl}>
         <div className="flex items-center gap-2 cursor-pointer">
           <LineIcon size={32} round /> {/* Facebook Icon */}
-          <span className="text-gray-700 dark:text-gray-300">Linkedin</span>
+          <span className="text-gray-700 ">Linkedin</span>
         </div>
       </LinkedinShareButton>
       
@@ -313,7 +313,7 @@ export default function PostCard({ post }: { post: TPost }) {
       <TwitterShareButton url={postUrl} title={postTitle}>
         <div className="flex items-center gap-2 cursor-pointer">
           <TwitterIcon size={32} round /> {/* Twitter Icon */}
-          <span className="text-gray-700 dark:text-gray-300">Twitter</span>
+          <span className="text-gray-700 ">Twitter</span>
         </div>
       </TwitterShareButton>
       
@@ -321,7 +321,7 @@ export default function PostCard({ post }: { post: TPost }) {
       <WhatsappShareButton url={postUrl} title={postTitle}>
         <div className="flex items-center gap-2 cursor-pointer">
           <WhatsappIcon size={32} round /> {/* WhatsApp Icon */}
-          <span className="text-gray-700 dark:text-gray-300">WhatsApp</span>
+          <span className="text-gray-700 ">WhatsApp</span>
         </div>
       </WhatsappShareButton>
     </div>
@@ -333,7 +333,7 @@ export default function PostCard({ post }: { post: TPost }) {
 
       {/* Main comment section */}
       <div className="flex flex-col space-y-2 pb-2 md:pb-4 my-3 relative">
-        <h4 className="font-semibold text-gray-600 dark:text-gray-400 cursor-pointer">Comments</h4>
+        <h4 className="font-semibold text-gray-600 cursor-pointer">Comments</h4>
 
         {/* Loading white layer */}
         {(addLoading || deleteLoading) && (
@@ -352,29 +352,29 @@ export default function PostCard({ post }: { post: TPost }) {
 
             <div className="flex flex-col flex-wrap">
               {/* User Info */}
-              <div className="bg-gray-100 dark:bg-gray-900/60 flex flex-col flex-wrap rounded-xl group px-3 relative">
+              <div className="bg-gray-100  flex flex-col flex-wrap rounded-xl group px-3 relative">
                 <h4 className="font-semibold">{comment?.userInfo?.name}</h4>
                 {/* Comment Text */}
-                <span className="text-gray-700 dark:text-gray-400">{comment?.comment}</span>
+                <span className="text-gray-700 ">{comment?.comment}</span>
 
                 {user && comment.userInfo.email === user.email && (  // Check if the logged-in user is the creator of the comment
-         <div className="p-4 hidden group-hover:flex text-gray-600 dark:text-gray-400 text-[13px] rounded-lg ml-4 absolute top-0 right-0 gap-3">
+         <div className="p-4 hidden group-hover:flex text-gray-600  text-[13px] rounded-lg ml-4 absolute top-0 right-0 gap-3">
          {/* Edit Icon */}
          <div
-           className="flex items-center justify-center bg-gray-200 dark:bg-gray-700 p-3 rounded-full cursor-pointer transform hover:scale-110 transition-all duration-200 shadow-md hover:bg-gray-300 dark:hover:bg-gray-600"
+           className="flex items-center justify-center bg-gray-200  p-3 rounded-full cursor-pointer transform hover:scale-110 transition-all duration-200 shadow-md hover:bg-gray-300 dark:hover:bg-gray-600"
            title="Edit Comment"
            onClick={() => { setEditCommentModal(true); setCommentForEdit(comment); }}
          >
-           <FaPen className="text-gray-600 dark:text-gray-400 hover:text-gray-500 transition-colors" />
+           <FaPen className="text-gray-600  hover:text-gray-500 transition-colors" />
          </div>
        
          {/* Delete Icon */}
          <div
-           className="flex items-center justify-center bg-red-200 dark:bg-red-700 p-3 rounded-full cursor-pointer transform hover:scale-110 transition-all duration-200 shadow-md hover:bg-red-300 dark:hover:bg-red-600"
+           className="flex items-center justify-center bg-red-200 p-3 rounded-full cursor-pointer transform hover:scale-110 transition-all duration-200 shadow-md hover:bg-red-300 dark:hover:bg-red-600"
            title="Delete Comment"
            onClick={() => handleDelete(comment._id!)}
          >
-           <RiDeleteBin4Line className="text-red-600 dark:text-red-400 hover:text-white transition-colors" />
+           <RiDeleteBin4Line className="text-red-600  hover:text-white transition-colors" />
          </div>
        </div>
        
@@ -389,12 +389,12 @@ export default function PostCard({ post }: { post: TPost }) {
           <form onSubmit={handleSubmit(onSubmit)} className="relative">
             <textarea
               {...register('newComment', { required: true })}
-              className="p-2 w-full mt-2 rounded-lg dark:bg-gray-700 text-gray-500 dark:text-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-gray-600"
+              className="p-2 w-full mt-2 rounded-lg  text-gray-500  resize-none focus:outline-none focus:ring-2 focus:ring-gray-600"
               placeholder="Add a comment..."
             />
             <button
               type="submit"
-              className="absolute right-4 bottom-3 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              className="absolute right-4 bottom-3 text-gray-500  hover:text-gray-600 "
             >
               <IoSendSharp />
             </button>

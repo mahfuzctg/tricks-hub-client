@@ -15,10 +15,10 @@ const DashboardLayout = ({children} : { children : ReactNode}) => {
 
     return (
 
-<section className="fixed w-full h-screen bg-white dark:bg-gray-900 ">
+<section className="fixed w-full h-screen bg-white  ">
         <Navbar/>
       
-      <section className="flex max-w-[1500px] mx-auto items-center gap-5 xl:gap-10 relative bg-[#F8F9FB] dark:bg-gray-900 p-3 pr-0 rounded-xl" >
+      <section className="flex max-w-[1500px] mx-auto items-center gap-5 xl:gap-10 relative bg-[#F8F9FB] p-3 pr-0 rounded-xl" >
 
         <div className="hidden lg:block w-72">
           <Sidebar>

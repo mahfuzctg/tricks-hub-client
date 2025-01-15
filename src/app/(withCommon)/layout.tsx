@@ -28,7 +28,7 @@ const CommonLayout = ({ children }: { children: ReactNode }) => {
   if (!user) {
     // Handle unauthenticated users
     return (
-      <section className="flex justify-center items-center w-full h-screen bg-[#F8F9FB] dark:bg-gray-900">
+      <section className="flex justify-center items-center w-full h-screen bg-[#F8F9FB] ">
         {/* Render login or register based on the current route */}
         {pathname === "/login" ? <Login /> : <Register />}
       </section>
@@ -36,9 +36,9 @@ const CommonLayout = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <section className="fixed w-full h-screen dark:bg-gray-900 bg-white">
+    <section className="fixed w-full h-screen  bg-white">
       <Navbar />
-      <section className="flex max-w-[1500px] mx-auto rounded-xl gap-5 xl:gap-10 relative bg-[#F8F9FB] dark:bg-gray-900 p-4">
+      <section className="flex max-w-[1500px] mx-auto rounded-xl gap-5 xl:gap-10 relative bg-[#F8F9FB]  p-4">
         {/* Sidebar */}
         <div className="hidden lg:block w-72">
           <Sidebar>
