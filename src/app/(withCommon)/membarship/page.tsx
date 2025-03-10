@@ -1,122 +1,84 @@
-'use client'
+'use client';
 
-import { useState } from "react";
-import PaymentModal from "./components/PaymentModal";
-import { useAppSelector } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import PaymentModal from './components/PaymentModal';
+import { useAppSelector } from '@/redux/hooks';
+import { useRouter } from 'next/navigation';
 
 const membershipPackages = [
+  
   {
-    name: "Tech Explorer",
+    name: 'Tech Explorer',
     price: 15,
-    description: "Get started with the latest tech trends and tools.",
+    description: 'Get started with the latest tech trends and tools.',
     features: [
-      "Weekly Tech Updates",
-      "Access to Beginner Resources",
-      "Limited Webinars"
+      'Weekly Tech Updates',
+      'Access to Beginner Resources',
+      'Limited Webinars'
     ],
-    color: "black",
-    bgColor: '#F3F4F6',
-    emoji: "🚀"
+    gradient: 'from-blue-500 to-blue-400'
   },
   {
-    name: "Digital Marketer Pro",
+    name: 'Digital Marketer Pro',
     price: 40,
-    description: "Unlock resources for mastering digital marketing techniques.",
+    description: 'Unlock resources for mastering digital marketing techniques.',
     features: [
-      "SEO Guides",
-      "Social Media Strategies",
-      "Content Marketing Tools",
-      "Exclusive Marketing Webinars"
+      'SEO Guides',
+      'Social Media Strategies',
+      'Content Marketing Tools',
+      'Exclusive Marketing Webinars'
     ],
-    color: "gray-800",
-    bgColor: '#F3F4F6',
-    emoji: "📈"
+    gradient: 'from-purple-500 to-purple-400'
   },
   {
-    name: "Startup Accelerator",
+    name: 'Startup Accelerator',
     price: 70,
-    description: "For budding entrepreneurs looking to launch their startups.",
+    description: 'For budding entrepreneurs looking to launch their startups.',
     features: [
-      "Startup Resources",
-      "Pitch Deck Templates",
-      "Investor Connections",
-      "Startup Legal Advice"
+      'Startup Resources',
+      'Pitch Deck Templates',
+      'Investor Connections',
+      'Startup Legal Advice'
     ],
-    color: "black",
-    bgColor: '#F3F4F6',
-    emoji: "💡"
+    gradient: 'from-pink-500 to-pink-400'
   },
   {
-    name: "Cybersecurity Essentials",
-    price: 25,
-    description: "Learn the fundamentals of cybersecurity to protect your assets.",
-    features: [
-      "Cybersecurity Basics",
-      "Phishing Prevention",
-      "Malware Protection",
-      "Online Safety Tools"
-    ],
-    color: "black",
-    bgColor: '#F3F4F6',
-    emoji: "🔐"
-  },
-  {
-    name: "Data Science Fundamentals",
-    price: 60,
-    description: "Learn the basics of data science, analytics, and visualization.",
-    features: [
-      "Data Analysis Tools",
-      "Data Visualization Resources",
-      "Intro to Machine Learning",
-      "Data Science Challenges"
-    ],
-    color: "gray-800",
-    bgColor: '#F3F4F6',
-    emoji: "📊"
-  },
-  {
-    name: "Mobile App Development",
-    price: 45,
-    description: "Get resources for building iOS and Android apps from scratch.",
-    features: [
-      "App Development Tutorials",
-      "UI/UX Design Basics",
-      "Access to Developer Tools",
-      "Mobile App Deployment Resources"
-    ],
-    color: "black",
-    bgColor: '#F3F4F6',
-    emoji: "📱"
-  },
-  {
-    name: "Game Developer Pro",
-    price: 80,
-    description: "Master game development with in-depth tutorials and tools.",
-    features: [
-      "Game Development Guides",
-      "Game Design Fundamentals",
-      "Unity and Unreal Engine Tutorials",
-      "Exclusive Game Developer Events"
-    ],
-    color: "gray-800",
-    bgColor: '#F3F4F6',
-    emoji: "🎮"
-  },
-  {
-    name: "Cloud Computing Expert",
+    name: 'Cyber Security Pro',
     price: 90,
-    description: "Become a cloud computing expert with resources for AWS, Azure, and more.",
+    description: 'Enhance your cybersecurity skills and protect digital assets.',
     features: [
-      "Cloud Architecture Tutorials",
-      "AWS and Azure Certification Prep",
-      "Cloud Security Best Practices",
-      "Hands-on Labs"
+      'Ethical Hacking Tutorials',
+      'Cyber Threat Analysis',
+      'Penetration Testing Tools',
+      'Security Certifications Guide'
     ],
-    color: "black",
-    bgColor: '#F3F4F6',
-    emoji: "☁️"
+    gradient: 'from-blue-600 to-blue-500'
+  },
+  {
+    name: 'Marketing Guru',
+    price: 65,
+    description: 'Master digital marketing strategies for business growth.',
+    features: [
+      'SEO & SEM Mastery',
+      'Social Media Marketing',
+      'Email Marketing Techniques',
+      'Analytics & Conversion Optimization'
+    ],
+    gradient: 'from-green-500 to-green-400'
+  },
+  {
+    name: 'Game Developer Pro',
+    price: 80,
+    description: 'Build and design your dream games with expert guidance.',
+    features: [
+      'Unity & Unreal Engine Courses',
+      'Game Art & Animation',
+      'Multiplayer Game Development',
+      'Monetization Strategies'
+    ],
+    gradient: 'from-purple-500 to-purple-400'
   }
+  
 ];
 
 const Membership = () => {
@@ -130,36 +92,30 @@ const Membership = () => {
       {/* Payment Modal */}
       {openPayModal && <PaymentModal membersShip={membersShip} open={openPayModal} setOpen={setOpenPayModal} />}
 
-      <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-300 mb-8 text-center">
+      <h1 className=" text-lg md:text:2xl lg:text-3xl font-semibold text-gray-800 dark:text-gray-300 mb-8 text-center">
         Choose Your Membership Plan
       </h1>
 
       {/* Membership Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
         {membershipPackages.map((pack, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 flex flex-col justify-between group hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 ease-in-out"
-            style={{
-              backgroundColor: pack.bgColor,
-            }}
+            className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden border border-gray-200"
           >
-            <div className="text-center mb-4">
-              <h2 className={`text-2xl font-semibold text-${pack.color}`}>
-                {pack.emoji} {pack.name}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">{pack.description}</p>
+            <div className={`absolute top-0 left-0 w-full h-10 bg-gradient-to-r ${pack.gradient} text-white text-center font-bold text-lg flex items-center justify-center`}>
+              ${pack.price} / month
+            </div>
+            
+            <div className="mt-12 text-center">
+              <h2 className="text-xl font-bold text-gray-800 dark:text-gray-300">{pack.name}</h2>
+              <p className="text-gray-600  dark:text-gray-400 mt-2">{pack.description}</p>
             </div>
 
-            <div className="text-center my-6">
-              <span className={`text-4xl font-bold text-${pack.color}`}>${pack.price}</span>
-              <span className="text-gray-600 dark:text-gray-400">/month</span>
-            </div>
-
-            <ul className="text-gray-600 dark:text-gray-400 mb-6">
+            <ul className="text-gray-600 text-sm dark:text-gray-400 mt-6 space-y-2">
               {pack.features.map((feature, idx) => (
-                <li key={idx} className="mb-2 flex items-center">
-                  <i className="fas fa-check-circle text-gray-800 mr-2"></i> {feature}
+                <li key={idx} className="flex items-center gap-2">
+                  <span className='text-green-500'>✅</span> {feature}
                 </li>
               ))}
             </ul>
@@ -170,10 +126,9 @@ const Membership = () => {
                 setMembersShip(pack);
                 setOpenPayModal(true);
               }}
-              className="w-full py-2 px-4 text-white rounded-md mt-auto hover:bg-opacity-90 transition-colors ease-in-out group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-yellow-500"
-              style={{ backgroundColor: '#4B5563' }} 
+              className={`w-full py-3 mt-6 text-white rounded-lg bg-gradient-to-r ${pack.gradient} hover:opacity-90 transition-all`}
             >
-              Subscribe Now
+              Purchase Now
             </button>
           </div>
         ))}
