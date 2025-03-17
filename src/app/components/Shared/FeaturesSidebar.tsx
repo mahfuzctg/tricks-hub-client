@@ -38,7 +38,7 @@ const FeaturesSidebar = () => {
     <>
       {user ? (
         // Sidebar for logged-in users
-        <div className="w-64 bg-white text-black p-4 space-y-2 ">
+        <div className="w-64 bg-white text-black p-4 space-y-4 ">
           {/* New Feeds Section */}
           <div className="space-y-4">
             <h2 className="text-gray-700 text-sm font-semibold">New Feeds</h2>
@@ -67,14 +67,14 @@ const FeaturesSidebar = () => {
                   <span className="font-medium">Profile 👤</span>
                 </Link>
               </li>
-              <li className="flex items-center space-x-4">
+              {/* <li className="flex items-center space-x-4">
                 <Link href={user?.role === 'admin' ? '/admin-dashboard/statistics' : '/user-dashboard/my-posts'} className={`flex items-center space-x-4 hover:text-gray-600 ${getActiveClass(user?.role === 'admin' ? '/admin-dashboard/statistics' : '/user-dashboard/my-posts')}`}>
                   <div className="p-2 rounded-full bg-gray-200 text-xl">
                     <RiDashboardFill className="text-black" />
                   </div>
                   <span className="font-medium">Dashboard 📊</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

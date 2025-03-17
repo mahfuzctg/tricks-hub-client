@@ -47,7 +47,7 @@ const CommonLayout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Main Content */}
-        <div className="w-full h-screen overflow-auto scrollbar-hide pb-24">
+        <div className="w-full  h-screen overflow-auto scrollbar-hide pb-24">
           {children}
         </div>
 

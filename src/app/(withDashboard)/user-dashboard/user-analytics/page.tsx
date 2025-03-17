@@ -58,28 +58,28 @@ const Dashboard = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gray-100 p-4 rounded-lg flex items-center">
+        <div className="bg-gray-100 p-4 rounded-lg flex items-center justify-center">
           <FaEye className="text-3xl text-black mr-4" />
-          <div>
-            <h3 className="text-xl font-semibold text-black">Views</h3>
+          <div >
+            <h3 className="text-xl font-semibold text-black ">Views</h3>
             <p className="text-2xl font-bold text-black">345</p>
           </div>
         </div>
-        <div className="bg-gray-100 p-4 rounded-lg flex items-center">
-          <FaChartLine className="text-3xl text-black mr-4" />
-          <div>
+        <div className="bg-gray-100 p-4 rounded-lg flex items-center text-center justify-center">
+          <FaChartLine className="text-3xl text-black mr-4" /> 
+          <div >
             <h3 className="text-xl font-semibold text-black">Votes</h3>
             <p className="text-2xl font-bold text-black">87</p>
           </div>
         </div>
-        <div className="bg-gray-100 p-4 rounded-lg flex items-center">
+        <div className="bg-gray-100 p-4 rounded-lg flex items-center justify-center">
           <FaComments className="text-3xl text-black mr-4" />
           <div>
             <h3 className="text-xl font-semibold text-black">Comments</h3>
             <p className="text-2xl font-bold text-black">17</p>
           </div>
         </div>
-        <div className="bg-gray-100 p-4 rounded-lg flex items-center">
+        <div className="bg-gray-100 p-4 rounded-lg flex items-center justify-center">
           <FaChartBar className="text-3xl text-black mr-4" />
           <div>
             <h3 className="text-xl font-semibold text-black">Shares</h3>
