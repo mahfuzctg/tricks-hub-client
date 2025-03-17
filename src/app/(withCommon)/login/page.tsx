@@ -118,22 +118,22 @@ export default function Login({ setOpen }: TProps) {
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
-          <div className="relative">
+          <div className="relative flex items-center">
             <input
               onChange={() => setErrors({ emailError: '', passwordError: '' })}
               type="email"
               placeholder="Email Address"
-              className="w-full py-3 pl-12 pr-3 outline-none border-2 border-gray-300 rounded-md bg-gray-50 text-black focus:border-blue-500"
+              className="w-full items-center py-3 pl-12 pr-3 outline-none border-2 border-gray-300 rounded-md bg-gray-50 text-black focus:border-blue-500"
               name="email"
               defaultValue={demoUser?.email || ""}
             />
-            <span className="text-2xl absolute left-4 text-gray-500">
+            <span className="text-2xl absolute left-4 text-gray-500 items-center">
               <AiOutlineMail />
             </span>
             {errors?.emailError && <span className="text-red-500 text-sm">{errors?.emailError}</span>}
           </div>
 
-          <div className="relative">
+          <div className="relative flex items-center">
             <input
               onChange={() => setErrors({ emailError: '', passwordError: '' })}
               type="password"

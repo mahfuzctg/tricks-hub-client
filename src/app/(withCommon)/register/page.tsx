@@ -66,12 +66,12 @@ export default function Register() {
     <div className="flex items-center justify-center h-screen  px-4">
       <div className="w-full max-w-2xl bg-white  shadow-lg rounded-lg p-4">
         <div className="text-center pb-5">
-          <h1 className="text-3xl font-bold text-gray-800 ">🌟 CREATE NEW ACCOUNT!</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 ">🌟 CREATE ACCOUNT!</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Name Field */}
-          <div className="relative flex items-center mt-4">
+          <div className="relative flex items-center ">
             <input
               type="text"
               placeholder="👤 Your Name"
@@ -83,7 +83,7 @@ export default function Register() {
           <span className="text-red-400 font-semibold text-sm p-1">{errors.name && 'Name must be 3-20 characters'}</span>
 
           {/* Email Field */}
-          <div className="relative flex items-center mt-4">
+          <div className="relative flex items-center ">
             <input
               type="email"
               placeholder="✉️ Email"
@@ -95,7 +95,7 @@ export default function Register() {
           <span className="text-red-400 font-semibold text-sm p-1">{errors.email && 'Invalid email address'}</span>
 
           {/* Password Field without Validation */}
-          <div className="relative flex items-center mt-4">
+          <div className="relative flex items-center ">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="🔒 Password"
@@ -116,23 +116,23 @@ export default function Register() {
           </span>
 
           {/* Image Upload Field */}
-          <div className="relative flex items-center mt-4">
+          <div className="relative flex items-center ">
             <input
               {...register('image', { required: true })}
               onChange={(e) => handleImageChange(e)}
               type="file"
-              className={`file-input ${imagePreview ? 'h-20 pl-20' : 'pl-8 h-14'} file-input-ghost w-full bg-white  outline-dashed outline-2 rounded-md outline-gray-300/40 `}
+              className={`file-input ${imagePreview ? 'h-20 pl-20 ' : 'pl-12 h-14 '} file-input-ghost  pt-3 flex  w-full bg-white  outline-dashed outline-2 rounded-md outline-gray-300/40 `}
             />
-            <span className="text-2xl absolute left-4 text-gray-400">
+            <span className="text-2xl absolute pl-4 text-gray-400 flex items-center">
               {imagePreview ? (
                 <Image width={300} height={300} alt="preview" className="size-16 object-cover rounded-md" src={imagePreview} />
               ) : <PiImage />}
             </span>
           </div>
-          <span className="text-red-400 font-semibold text-sm p-1">{errors.image && 'Image is required'}</span>
+          <span className="text-red-400 font-semibold text-sm p-1 items-center">{errors.image && 'Image is required'}</span>
 
           {/* Terms Checkbox */}
-          <div className="mt-4">
+          <div>
             <label className="flex items-center gap-2 text-gray-500 font-semibold text-sm">
               <input type="checkbox" {...register('terms', { required: true })} />
               📜 I agree to the Terms and Conditions
