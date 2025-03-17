@@ -18,10 +18,11 @@ const UserNavigations = () => {
 
     const menuItems = [
         { href: "/", icon: <FaHome />, label: "Home" },
+        { href: "/user-dashboard/user-analytics", icon: <SiSimpleanalytics />, label: "Analytics" },
         { href: "/user-dashboard/my-posts", icon: <TfiLayoutListPost />, label: "My Posts" },
         { href: "/user-dashboard/my-followers", icon: <SlUserFollowing />, label: "Followers" },
         { href: "/user-dashboard/my-payments", icon: <VscHistory />, label: "Payments" },
-        { href: "/user-dashboard/user-analytics", icon: <SiSimpleanalytics />, label: "Analytics" },
+   
     ];
 
     return (

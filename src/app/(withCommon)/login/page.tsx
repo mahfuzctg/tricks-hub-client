@@ -48,43 +48,43 @@ export default function Login({ setOpen }: TProps) {
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
+  
     const form = new FormData(e.currentTarget);
     const email = form.get('email') as string;
     const password = form.get('password') as string;
-
+  
     try {
       const res: any = await login({ email, password });
-
+  
       if ('error' in res) {
         const errorMessage = (res.error as LoginErrorResponse)?.message;
-        if (errorMessage === 'user not exist') {
-          setErrors({ ...errors, emailError: 'Incorrect Email 😞' });
-        } else if (errorMessage === 'Password incorrect') {
-          setErrors({ ...errors, passwordError: 'Incorrect Password 🔒' });
-        }
+        setErrors(prev => ({
+          emailError: errorMessage === 'user not exist' ? 'Incorrect Email 😞' : prev.emailError,
+          passwordError: errorMessage === 'Password incorrect' ? 'Incorrect Password 🔒' : prev.passwordError
+        }));
         setLoading(false);
         return;
       }
-
+  
       if ((res.data as LoginResponse)?.success) {
-        const userImage = res.data.data.image;
-        const name = res.data.data.name;
-
+        const { image: userImage, name, role } = res.data.data;
+  
         // Decode the JWT token
         const decoded: TJwtDecoded = jwtDecode(res.data.token);
         dispatch(setUser({
           user: { ...decoded, image: userImage, name },
           token: res.data.token
         }));
-
+  
         // Set token to cookies for middleware access
         Cookies.set('accessToken', res.data.token, { expires: 1 });
-
+  
         toast.success('Logged In Successfully 🎉');
         setLoading(false);
         if (typeof setOpen === 'function') setOpen(false);
-        router.push('/');
+  
+        // Redirect based on role
+        router.replace(role === 'admin' ? '/admin-dashboard/statistics' : '/');
       }
     } catch (error) {
       console.error('Login failed:', error);

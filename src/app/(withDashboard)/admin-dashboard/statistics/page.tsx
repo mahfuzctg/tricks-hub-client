@@ -1,4 +1,4 @@
-/* eslint-disable  @typescript-eslint/no-unused-vars*/
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { useGetStatisticsQuery } from "@/redux/features/statistics/statisticsApi";
@@ -8,7 +8,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Statistics = () => {
   const { data } = useGetStatisticsQuery(undefined);
-  const statistics = data?.data || {}; 
+  const statistics = data?.data || {};
 
   const chartData = [
     {
@@ -38,8 +38,8 @@ const Statistics = () => {
       title: 'Users Overview',
       chart: (
         <PieChart>
-          <Pie data={[{ name: 'Total Users', value: statistics.totalUsers }, { name: 'Premium Users', value: statistics.totalPremiumUsers }]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value" label>
-            {['#1F2937', '#1F2937'].map((color, index) => (
+          <Pie data={[{ name: 'Total Users', value: statistics.totalUsers }, { name: 'Premium Users', value: statistics.totalPremiumUsers }]} cx="50%" cy="50%" outerRadius={90} fill="#8884d8" dataKey="value" label>
+            {COLORS.map((color, index) => (
               <Cell key={index} fill={color} />
             ))}
           </Pie>
@@ -50,17 +50,21 @@ const Statistics = () => {
   ];
 
   return (
-    <div className="container mx-auto p-6 bg-white">
-      <h1 className="text-3xl text-black font-bold text-center mb-8">Statistics Overview</h1>
+    <div className="container mx-auto p-6 bg-white my-8">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Statistics Overview</h1>
 
-      {chartData.map(({ title, chart }, index) => (
-        <div key={index} className="mb-12 bg-white shadow-lg rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-black mb-4">{title}</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            {chart}
-          </ResponsiveContainer>
-        </div>
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {chartData.map(({ title, chart }, index) => (
+          <div key={index} className="bg-white shadow-md rounded-lg p-4">
+            <h2 className="text-lg font-semibold text-gray-700 mb-4 text-center">{title}</h2>
+            <div className="h-60">
+              <ResponsiveContainer width="100%" height="100%">
+                {chart}
+              </ResponsiveContainer>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

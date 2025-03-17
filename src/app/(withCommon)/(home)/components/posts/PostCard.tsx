@@ -264,11 +264,11 @@ export default function PostCard({ post }: { post: TPost }) {
       </button>
     </div>
       {/* Images Section */}
-      <Link href={`/details/${_id}`}>
+      <>
         <div className="pointer-events-none">
           <ImageGallery images={images} />
         </div>
-      </Link>
+      </>
 
       {/* Likes, Dislikes, Comments, Rating, and Share Section */}
       <div className="flex justify-between items-center mt-4 border-y py-2">

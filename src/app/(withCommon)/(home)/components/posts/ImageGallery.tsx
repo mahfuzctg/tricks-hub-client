@@ -24,7 +24,7 @@ export default function ImageGallery({ images }: IProps) {
       {images?.map((image, index) => (
         <Link
           key={index}
-          className={`w-full ${images?.length === 3 && index === 0 ? "col-span-2" : "col-span-1"}`}
+          className={`w-full ${images?.length === 3 && index === 2 ? "col-span-2" : "col-span-1"}`}
           href={image}
         >
           <Image

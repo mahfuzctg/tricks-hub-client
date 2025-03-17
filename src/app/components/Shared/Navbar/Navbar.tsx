@@ -59,13 +59,13 @@ export default function Navbar() {
         {/* Icons and user section */}
         <div className="flex items-center justify-center gap-2 z-50">
           <div className="mr-3 md:mr-5 lg:mr-0 rounded-full text-xl md:text-[22px] lg:text-2xl text-black flex gap-5 md:gap-6 items-center">
-            {user && (
+            {/* {user && (
               <div className="flex items-center gap-3 md:gap-6 text-2xl md:text-[26px] text-gray-500 ">
                 <span><IoIosNotificationsOutline className="text-gray-600 " title="Notifications" /></span>
                 <span className="text-xl md:text-[23px] xl:text-2xl hidden md:block"><RxDashboard className="text-gray-600 " title="Dashboard" /></span>
                 <span className="hidden md:block"><IoSettingsOutline className="text-gray-600 " title="Settings" /></span>
               </div>
-            )}
+            )} */}
 
             <div className="dropdown dropdown-end flex items-center justify-center gap-2 z-20">
               {!user ? (

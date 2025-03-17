@@ -29,7 +29,7 @@ export default function CreatePost() {
           alt="Avatar"
           height={40}
           width={40}
-          className="rounded-full object-cover"
+          className=" rounded-full "
         />
         <button
           onClick={() => setOpenModal(true)}
@@ -40,31 +40,31 @@ export default function CreatePost() {
       </div>
 
       {/* Action Buttons Section */}
-      <div className="flex justify-between items-center text-xs md:text-sm text-gray-600">
+      {/* <div className="flex justify-between items-center text-xs md:text-sm text-gray-600">
 
-        {/* Live Video Button */}
+     
         <button className="flex items-center space-x-2 text-gray-800 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
           <FaVideo className="text-lg md:text-xl" />
           <span>🎥 Live Video</span>
         </button>
 
-        {/* Photo/Video Button */}
+    
         <button className="flex items-center space-x-2 text-gray-800 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
           <FaCamera className="text-lg md:text-xl" />
           <span>📸 Photo/Video</span>
         </button>
 
-        {/* Feeling/Activity Button */}
+   
         <button className="flex items-center space-x-2 text-gray-800 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
           <FaSmile className="text-lg md:text-xl" />
           <span>😊 Feeling/Activity</span>
         </button>
 
-        {/* More Options Button */}
+     
         <button className="hidden md:block text-gray-500 hover:bg-gray-100 p-2 rounded-lg">
           <FaEllipsisH className="text-lg md:text-xl" />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
