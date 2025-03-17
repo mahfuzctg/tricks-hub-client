@@ -8,8 +8,8 @@ const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     // baseUrl: `${process.env.NEXT_PUBLIC_BASE_API}`,
  
-    baseUrl : "https://tricks-hub-server.vercel.app/api",
-    // baseUrl : "http://localhost:5000/api",
+    // baseUrl : "https://tricks-hub-server.vercel.app/api",
+    baseUrl : "http://localhost:5000/api",
    
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
