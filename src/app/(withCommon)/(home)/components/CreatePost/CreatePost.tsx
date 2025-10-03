@@ -3,7 +3,7 @@
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import { useState } from 'react';
-import { FaVideo, FaCamera, FaSmile, FaPen, FaEllipsisH } from 'react-icons/fa';
+import {  FaPen } from 'react-icons/fa';
 import CreatePostModal from './CreatePostModal';
 
 export default function CreatePost() {

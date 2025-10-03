@@ -3,14 +3,14 @@
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoIosClose } from "react-icons/io"; 
 import Link from "next/link";
-import { IoArrowRedoOutline, IoSettingsOutline } from "react-icons/io5";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoArrowRedoOutline } from "react-icons/io5";
+
 import { RiUserFill } from "react-icons/ri";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { logout } from "@/redux/features/authentication/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { RxDashboard } from "react-icons/rx";
+
 import Cookies from 'js-cookie';
 import Image from "next/image";
 import { AiOutlineUserDelete } from "react-icons/ai";

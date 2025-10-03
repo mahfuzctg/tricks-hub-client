@@ -8,7 +8,7 @@ import { VscHistory } from "react-icons/vsc";
 import { TfiLayoutListPost } from "react-icons/tfi";
 import { SlUserFollowing } from "react-icons/sl";
 import { SiSimpleanalytics } from "react-icons/si";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+
 
 const UserNavigations = () => {
     const pathName = usePathname();

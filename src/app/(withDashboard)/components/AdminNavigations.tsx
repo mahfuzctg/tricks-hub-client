@@ -8,7 +8,7 @@ import { FaUsers } from "react-icons/fa";
 import { ImBooks } from "react-icons/im";
 import { RiAdminFill } from "react-icons/ri";
 import { BsGraphUp } from "react-icons/bs";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+
 
 const AdminNavigations = () => {
     const pathName = usePathname();
